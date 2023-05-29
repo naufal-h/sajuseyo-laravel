@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    // Add a product to the cart
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function addToCart($productId)
     {
         $product = Product::findOrFail($productId);
@@ -19,11 +22,9 @@ class CartController extends Controller
         $cartItem = Cart::where('user_id', $user->id)->where('product_id', $product->id)->first();
 
         if ($cartItem) {
-            // Increment the quantity if the product is already in the cart
             $cartItem->quantity += 1;
             $cartItem->save();
         } else {
-            // Add the product to the cart with quantity 1
             Cart::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
@@ -34,7 +35,6 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     }
 
-    // Remove a product from the cart
     public function removeFromCart($cartItemId)
     {
         $cartItem = Cart::findOrFail($cartItemId);
@@ -43,7 +43,6 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Product removed from cart successfully.');
     }
 
-    // Show the cart
     public function showCart(Request $request)
     {
         $user = User::findOrFail($request->user()->id);
@@ -68,7 +67,6 @@ class CartController extends Controller
             $cartItem->save();
             return redirect()->route('cart.show')->with('success', 'Quantity decreased successfully');
         } else {
-            // If the quantity is already 1, you may choose to remove the item from the cart instead
             $cartItem->delete();
             return redirect()->route('cart.show')->with('success', 'Item removed from cart');
         }

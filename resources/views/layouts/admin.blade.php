@@ -57,47 +57,7 @@
                                                 <hr />
                                             </li>
 
-                                            <li class="has-sub">
-                                                <a class="sidenav-item-link" href="javascript:void(0)">
-                                                    <svg class="nav-icon" width="24" height="24"
-                                                        viewBox="0 0 800 800" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M700.01 222.46C700.01 290.08 645.17 344.92 577.55 344.92C509.93 344.92 455.12 290.08 455.12 222.46C455.12 154.84 509.93 100 577.55 100C645.17 100 700.01 154.84 700.01 222.46Z"
-                                                            stroke="#1c2331" stroke-width="50" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M344.89 222.46C344.89 290.08 290.08 344.92 222.43 344.92C154.84 344.92 100 290.08 100 222.46C100 154.84 154.84 100 222.43 100C290.08 100 344.89 154.84 344.89 222.46Z"
-                                                            stroke="#1c2331" stroke-width="50" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M700.01 575.397C700.01 643.016 645.17 697.826 577.55 697.826C509.93 697.826 455.12 643.016 455.12 575.397C455.12 507.777 509.93 452.937 577.55 452.937C645.17 452.937 700.01 507.777 700.01 575.397Z"
-                                                            stroke="#1c2331" stroke-width="50" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M344.89 575.397C344.89 643.016 290.08 697.826 222.43 697.826C154.84 697.826 100 643.016 100 575.397C100 507.777 154.84 452.937 222.43 452.937C290.08 452.937 344.89 507.777 344.89 575.397Z"
-                                                            stroke="#1c2331" stroke-width="50" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                    <span class="nav-text">Categories</span>
-                                                    <div class="caret"></div>
-                                                </a>
 
-                                                <div class="collapse">
-                                                    <ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
-                                                        <li class="">
-                                                            <a class="sidenav-item-link" href="./main-category.html">
-                                                                <span class="nav-text">Main Category</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="">
-                                                            <a class="sidenav-item-link" href="./sub-category.html">
-                                                                <span class="nav-text">Sub Category</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
 
                                             <li
                                                 class="has-sub {{ Request::is('admin/products*') ? 'active expand' : '' }}">

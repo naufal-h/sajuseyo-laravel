@@ -20,7 +20,7 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->input('remember'))) {
             if (Auth::user()->isAdmin) {
                 return redirect('/admin/dashboard');
             } else {
@@ -34,6 +34,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/home');
     }
 }

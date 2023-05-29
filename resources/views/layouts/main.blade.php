@@ -1,3 +1,11 @@
+@php
+    $totalQuantity = 0;
+    if (auth()->check()) {
+        $user = auth()->user();
+        $totalQuantity = $user->carts->sum('quantity');
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +53,8 @@
                                     <path
                                         d="M21.8206 6.10134C21.7575 6.01178 21.6739 5.93868 21.5767 5.8882C21.4795 5.83772 21.3716 5.81133 21.262 5.81126H6.67123L5.56676 2.00251C5.13364 0.502727 4.10443 0.34082 3.6823 0.34082H0.737396C0.359938 0.34082 0.0546875 0.646414 0.0546875 1.02351C0.0546875 1.4006 0.360281 1.70617 0.737375 1.70617H3.68194C3.77509 1.70617 4.05938 1.70617 4.25327 2.37614L8.05274 16.3396C8.13524 16.6342 8.40371 16.8377 8.70997 16.8377H17.9905C18.2786 16.8377 18.5357 16.6572 18.633 16.386L21.9041 6.7249C21.9794 6.51556 21.9481 6.2825 21.8206 6.10134H21.8206ZM17.5101 15.4727H9.22815L7.05496 7.17698H20.2914L17.5101 15.4727ZM16.1561 18.2213C15.2066 18.2213 14.4373 18.9906 14.4373 19.9401C14.4373 20.8895 15.2066 21.6588 16.1561 21.6588C17.1055 21.6588 17.8748 20.8895 17.8748 19.9401C17.8748 18.9906 17.1055 18.2213 16.1561 18.2213ZM9.96859 18.2213C9.01915 18.2213 8.24984 18.9906 8.24984 19.9401C8.24984 20.8895 9.01915 21.6588 9.96859 21.6588C10.918 21.6588 11.6873 20.8895 11.6873 19.9401C11.6873 18.9906 10.918 18.2213 9.96859 18.2213Z" />
                                 </svg>
-                                <a href="cart.html" style="margin-left: 7px">Cart</a>
-                                <div class="item-count">4</div>
+                                <a href="{{ route('cart.show') }}" style="margin-left: 7px">Cart</a>
+                                <div class="item-count">{{ $totalQuantity }}</div>
                             </button>
                             <a href="wishlist.html" class="btn2">
                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -55,7 +63,7 @@
                                         d="M9.00252 1.52123C6.98058 -0.0524605 4.05114 0.0891645 2.19283 1.94679C0.180516 3.9591 0.180516 7.22679 2.19283 9.2391L8.51233 15.5586C8.78114 15.8274 9.21633 15.8274 9.48514 15.5586L15.8046 9.2391C17.817 7.22679 17.817 3.9591 15.8046 1.94679C13.9553 0.0974144 11.0258 -0.0332104 9.00252 1.52123ZM8.99977 3.12173C9.30089 3.11623 9.45833 2.94435 9.48308 2.92304C11.1021 1.51366 13.3613 1.44835 14.8325 2.9196C16.3079 4.39498 16.3079 6.79092 14.8325 8.26698L8.99839 14.1004L3.16495 8.26698C1.68958 6.79092 1.68958 4.39498 3.16495 2.9196C4.64102 1.44354 7.03764 1.44423 8.5137 2.92029C8.64227 3.04885 8.81758 3.12173 8.99977 3.12173Z" />
                                 </svg>
                             </a>
-                            <a href="user.html" class="btn2">
+                            <a href="{{ auth()->check() ? '' : route('login') }}" class="btn2">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -104,16 +112,26 @@
                     <div class="welcome">
                         <p>Welcome,&nbsp;
                         <div class="usnm-drop">
-                            <a class="usernm">{{ Auth::user()->name }}</a>
+                            @auth
+                                <a class="usernm">{{ Auth::user()->name }}!</a>
+                            @else
+                                <a class="usernm">Guest!</a>
+                            @endauth
                             <div class="usnm-opt">
-                                <a href="#">Profile</a>
-                                <a
-                                    href="{{ route('logout') }}"onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Logout</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
+                                @auth
+                                    <a href="#">Profile</a>
+                                    <a
+                                        href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                @else
+                                    <a href="{{ route('login') }}">Login</a>
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endauth
+
                             </div>
                         </div>
                         </p>

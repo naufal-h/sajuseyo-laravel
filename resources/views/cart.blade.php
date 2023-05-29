@@ -142,7 +142,6 @@
     </div>
     <script>
         function updateQuantity(cartItemId, newQuantity) {
-            // Send an AJAX request to update the quantity
             $.ajax({
                 url: '/cart/' + cartItemId + '/update-quantity',
                 method: 'POST',
@@ -151,11 +150,9 @@
                     quantity: newQuantity
                 },
                 success: function(response) {
-                    // Handle the success response
                     console.log(response);
                 },
                 error: function(xhr) {
-                    // Handle the error response
                     console.log(xhr.responseText);
                 }
             });
