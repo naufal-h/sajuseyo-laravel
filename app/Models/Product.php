@@ -9,7 +9,16 @@ use App\Models\Agency;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'price', 'category_id', 'agency_id', 'images'];
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'discounted_price',
+        'stock',
+        'category_id',
+        'agency_id',
+        'images'
+    ];
     protected $casts = [
         'images' => 'array',
     ];

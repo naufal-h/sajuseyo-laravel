@@ -85,7 +85,7 @@
                                     <div class="add-prod-col-right">
                                         <div class="thumbnailvendor-upload-detail">
                                             <div class="textform">
-                                                <div class="addprod-title-col">
+                                                <div class="addprod-title-col-long">
                                                     <label for="name" class="form-label">Name</label>
                                                     <input type="text" name="name" class="form-control slug-title"
                                                         id="name" />
@@ -108,6 +108,25 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
+                                                <div class="addprod-title-col">
+                                                    <label for="discounted_price" class="form-label">Discounted
+                                                        Price</label>
+                                                    <input type="number" name="discounted_price" id="discounted_price"
+                                                        class="form-control" />
+                                                    @error('discounted_price')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="addprod-title-col">
+                                                    <label for="stock" class="form-label">Stock</label>
+                                                    <input type="number" name="stock" id="stock"
+                                                        class="form-control" />
+                                                    @error('stock')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+
                                                 <div class="addprod-title-col">
                                                     <label for="category_id" class="form-label">Category</label>
                                                     <select name="category_id" id="category_id" class="form-select">

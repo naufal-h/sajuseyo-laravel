@@ -1,0 +1,66 @@
+.celeb-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 30%;
+}
+
+.main-content {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.main-content .over_box {
+    margin-left: -7px;
+}
+
+.main-content .product-buttons {
+    right: 4px;
+}
+
+.text-label {
+    padding-top: 30px;
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #1c2331;
+}
+
+.related {
+    color: #1c2331;
+
+    font-size: 14px;
+    line-height: 40px;
+    text-decoration: none;
+}
+.product-category-link {
+    color: #1c2331;
+
+    font-size: 14px;
+    line-height: 40px;
+    text-decoration: none;
+}
+.product-category-link:hover {
+    color: #eab8c0;
+}
+
+.active-category {
+    color: #eab8c0;
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    clear: both;
+    display: block;
+    width: 192px;
+    background-color: #1c2331;
+    height: 2px;
+}

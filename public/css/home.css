@@ -1,0 +1,138 @@
+.hero {
+  position: relative;
+  height: 500px;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 17px;
+  margin-top: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-shop-now {
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 20px;
+  background-color: #fff;
+  color: #eab8c0;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-shop-now:hover {
+  background-color: #eab8c0;
+  color: #fff;
+}
+
+.hero {
+  overflow: hidden;
+}
+.hero__media {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.hero__media iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hero__media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  left: -100%;
+  max-width: none;
+}
+@media screen and (min-width: 1140px) {
+  .hero__media iframe {
+    width: 100%;
+    height: 300%;
+    left: auto;
+    top: -100%;
+  }
+}
+.hero--450px {
+  height: 292px;
+}
+.hero--550px {
+  height: 357px;
+}
+.hero--650px {
+  height: 422px;
+}
+.hero--750px {
+  height: 487px;
+}
+.hero--850px {
+  height: 552px;
+}
+.hero[data-natural] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media only screen and (min-width: 769px) {
+  .hero--450px {
+    height: 450px;
+  }
+  .hero--550px {
+    height: 550px;
+  }
+  .hero--650px {
+    height: 650px;
+  }
+  .hero--750px {
+    height: 750px;
+  }
+  .hero--850px {
+    height: 850px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .hero--mobile--250px:not([data-natural]) {
+    height: 250px;
+  }
+  .hero--mobile--300px:not([data-natural]) {
+    height: 300px;
+  }
+  .hero--mobile--400px:not([data-natural]) {
+    height: 400px;
+  }
+  .hero--mobile--500px:not([data-natural]) {
+    height: 500px;
+  }
+}

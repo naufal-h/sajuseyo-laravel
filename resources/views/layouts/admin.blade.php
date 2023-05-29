@@ -18,7 +18,7 @@
         <div class="left-sidebar">
             <div id="sidebar" class="sidebar sidebar-footer">
                 <div class="brand">
-                    <a href="./dashboard.html">
+                    <a href="{{ route('admin.dashboard') }}">
                         <img class="brand-icon" src="{{ asset('assets/logo/logo-small.png') }}" alt="" />
                         <span class="brand-name text-truncate">Sajuseyo!</span>
                     </a>
@@ -34,19 +34,21 @@
                                 <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden">
                                     <div class="simplebar-content" style="padding: 0px">
                                         <ul class="nav sidebar-inner" id="sidebar-menu">
-                                            <li class="active">
-                                                <a class="sidenav-item-link" href="./dashboard.html">
+                                            <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
+                                                <a class="sidenav-item-link" href="{{ route('admin.dashboard') }}">
                                                     <svg class="nav-icon" width="24" height="24"
                                                         viewBox="0 0 800 800" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <g clip-path="url(#clip0_759_232)">
                                                             <path
                                                                 d="M600 133.333H200C163.181 133.333 133.333 163.181 133.333 200V600C133.333 636.819 163.181 666.666 200 666.666H600C636.819 666.666 666.666 636.819 666.666 600V200C666.666 163.181 636.819 133.333 600 133.333Z"
-                                                                stroke="#EAB8C0" stroke-width="66.6667"
-                                                                stroke-linecap="round" />
-                                                            <path d="M133.333 300H666.666" stroke="#EAB8C0"
+                                                                stroke="{{ Request::is('admin/dashboard') ? '#EAB8C0' : '#1C2331' }}"
                                                                 stroke-width="66.6667" stroke-linecap="round" />
-                                                            <path d="M300 333.333V666.666" stroke="#EAB8C0"
+                                                            <path d="M133.333 300H666.666"
+                                                                stroke="{{ Request::is('admin/dashboard') ? '#EAB8C0' : '#1C2331' }}"
+                                                                stroke-width="66.6667" stroke-linecap="round" />
+                                                            <path d="M300 333.333V666.666"
+                                                                stroke="{{ Request::is('admin/dashboard') ? '#EAB8C0' : '#1C2331' }}"
                                                                 stroke-width="66.6667" stroke-linecap="round" />
                                                         </g>
                                                     </svg>
@@ -97,7 +99,8 @@
                                                 </div>
                                             </li>
 
-                                            <li class="has-sub">
+                                            <li
+                                                class="has-sub {{ Request::is('admin/products*') ? 'active expand' : '' }}">
                                                 <a class="sidenav-item-link" href="javascript:void(0)">
                                                     <svg class="nav-icon" width="24" height="24"
                                                         viewBox="0 0 800 800" fill="none"
@@ -105,24 +108,26 @@
                                                         <g clip-path="url(#clip0_759_238)">
                                                             <path
                                                                 d="M475 43.3013L671.41 156.699C717.82 183.494 746.41 233.013 746.41 286.603V513.397C746.41 566.987 717.82 616.506 671.41 643.301L475 756.699C428.59 783.494 371.41 783.494 325 756.699L128.59 643.301C82.1797 616.506 53.5898 566.987 53.5898 513.397V286.603C53.5898 233.013 82.1797 183.494 128.59 156.699L325 43.3013C371.41 16.5063 428.59 16.5063 475 43.3013ZM355.221 83.7907L350 86.6025L153.59 200C124.278 216.923 105.629 247.443 103.747 280.986L103.59 286.603V513.397C103.59 547.244 120.696 578.654 148.804 597.055L153.59 600L350 713.397C379.221 730.268 414.847 731.206 444.779 716.209L450 713.397L646.41 600C675.722 583.077 694.371 552.557 696.253 519.014L696.41 513.397V286.603C696.41 252.756 679.304 221.346 651.196 202.945L646.41 200L450 86.6025C420.779 69.7317 385.153 68.7944 355.221 83.7907ZM575.508 288.934C581.99 301.125 577.362 316.263 565.171 322.745L424.712 397.416L424.713 566.639C424.713 580.446 413.52 591.639 399.713 591.639C385.906 591.639 374.713 580.446 374.713 566.639L374.712 397.416L234.255 322.745C222.064 316.263 217.436 301.125 223.918 288.934C230.4 276.743 245.538 272.115 257.729 278.598L399.712 354.066L541.697 278.598C553.888 272.115 569.026 276.743 575.508 288.934Z"
-                                                                fill="#1C2331" />
+                                                                fill="{{ Request::is('admin/products*') ? '#EAB8C0' : '#1C2331' }}" />
                                                         </g>
                                                     </svg>
 
                                                     <span class="nav-text">Products</span>
                                                     <div class="caret"></div>
                                                 </a>
-                                                <div class="collapse">
+                                                <div
+                                                    class="collapse {{ Request::is('admin/products*') ? 'show' : '' }}">
                                                     <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
                                                         <li class="">
                                                             <a class="sidenav-item-link"
-                                                                href="{{ url('/admin/products') }}">
+                                                                href="{{ route('admin.products.create') }}">
                                                                 <span class="nav-text">Add
                                                                     Product</span>
                                                             </a>
                                                         </li>
                                                         <li class="">
-                                                            <a class="sidenav-item-link" href="./list-product.html">
+                                                            <a class="sidenav-item-link"
+                                                                href="{{ url('/admin/products') }}">
                                                                 <span class="nav-text">List Product</span>
                                                             </a>
                                                         </li>

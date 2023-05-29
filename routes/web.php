@@ -20,6 +20,9 @@ Route::get('/home', function () {
     return redirect('/');
 });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/category/{categoryId}', [ProductController::class, 'showProductsByCategory'])->name('products.category');
+Route::get('/agency/{agencyId}', [ProductController::class, 'showProductsByAgency'])->name('products.agency');
+
 
 // Login routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -35,13 +38,17 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
-});
 
-Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
-Route::get('/admin/products/{product}', [ProductController::class, 'show'])->name('admin.products.show');
-Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
-Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
-Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-Route::resource('products', 'ProductController');
+    Route::get('/admin', function () {
+        return redirect('/admin/dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/admin/products/{product}', [ProductController::class, 'show'])->name('admin.products.show');
+    Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+    Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+    Route::resource('products', 'ProductController');
+});

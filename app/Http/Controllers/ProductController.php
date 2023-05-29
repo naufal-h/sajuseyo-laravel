@@ -32,6 +32,8 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'discounted_price' => 'nullable|numeric',
+            'stock' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
             'agency_id' => 'required|exists:agencies,id',
             'images' => 'nullable|array|max:7',
@@ -74,6 +76,8 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'discounted_price' => 'nullable|numeric',
+            'stock' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
             'agency_id' => 'required|exists:agencies,id',
             'images' => 'nullable|array|max:7',
@@ -140,5 +144,21 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully');
+    }
+
+    public function showProductsByCategory($categoryId)
+    {
+        $category = Category::findOrFail($categoryId);
+        $products = $category->products()->get();
+
+        return view('products.category', compact('category', 'products'));
+    }
+
+    public function showProductsByAgency($agencyId)
+    {
+        $agency = Agency::findOrFail($agencyId);
+        $products = $agency->products()->get();
+
+        return view('products.agency', compact('agency', 'products'));
     }
 }
