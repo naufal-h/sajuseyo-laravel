@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,12 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
     Route::resource('products', 'ProductController');
 });
+
+// Cart routes
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+Route::get('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/{id}/increase-quantity', [CartController::class, 'increaseQuantity'])->name('cart.increase-quantity');
+Route::post('/cart/{id}/decrease-quantity', [CartController::class, 'decreaseQuantity'])->name('cart.decrease-quantity');
+Route::post('/cart/{id}/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.update-quantity');
