@@ -1,75 +1,100 @@
 .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background-color: white;
-  border: none;
-  padding: 13px;
-  cursor: pointer;
-  border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: white;
+    border: none;
+    padding: 13px;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 .btn:hover {
-  background-color: #eab8c0;
+    background-color: #eab8c0;
 }
 
 svg {
-  fill: #1c2331;
+    fill: #1c2331;
 }
 
 .btn:hover svg {
-  fill: white;
+    fill: white;
+}
+
+.btninv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: #eab8c0;
+    border: none;
+    padding: 13px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.btninv:hover {
+    background-color: white;
+}
+
+.btninv svg {
+    fill: white;
+}
+
+.btninv:hover svg {
+    fill: #1c2331;
 }
 
 .btn2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background-color: white;
-  border: none;
-  padding: 13px;
-  cursor: pointer;
-  border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: white;
+    border: none;
+    padding: 13px;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 .btn2:hover svg {
-  fill: #eab8c0;
+    fill: #eab8c0;
 }
 
 .btn-pjg {
-  height: 44px;
-  background-color: white;
-  border: none;
-  padding: 11px;
-  cursor: pointer;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 11px 16px;
+    height: 44px;
+    background-color: white;
+    border: none;
+    padding: 11px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 11px 16px;
 }
 
 .btn-pjg:hover {
-  color: #eab8c0;
+    color: #eab8c0;
 }
 
 .btn-pjg:hover svg {
-  fill: #eab8c0;
+    fill: #eab8c0;
 }
 
 .btn-pjg:hover a {
-  color: #eab8c0;
+    color: #eab8c0;
 }
 
 .konten {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }

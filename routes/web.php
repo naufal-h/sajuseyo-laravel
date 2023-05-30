@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,10 @@ Route::post('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart
 Route::patch('/cart/increase/{cartItemId}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
 Route::patch('/cart/decrease/{cartItemId}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
 Route::patch('/cart/update/{cartItemId}', [CartController::class, 'updateQuantity'])->name('cart.update');
+
+// Wishlist routes
+Route::get('/wishlist', [WishlistController::class, 'showWishlist'])->name('wishlist.show');
+Route::get('/wishlist/add/{productId}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/add/{productId}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::get('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+Route::post('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');

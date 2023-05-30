@@ -50,7 +50,7 @@
                                     {{ auth()->check() ? app('App\Http\Controllers\CartController')->getCartTotalQuantity() : 0 }}
                                 </div>
                             </button>
-                            <a href="wishlist.html" class="btn2">
+                            <a href="{{ route('wishlist.show') }}" class="btn2">
                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
