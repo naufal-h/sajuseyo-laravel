@@ -33,8 +33,8 @@ class Product extends Model
         return $this->belongsTo(Agency::class);
     }
 
-    public function carts()
+    public function cartItems()
     {
-        return $this->hasMany(Cart::class);
+        return $this->hasMany(CartItem::class);
     }
 }

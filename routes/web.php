@@ -57,8 +57,9 @@ Route::middleware(['admin'])->group(function () {
 // Cart routes
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::get('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
-Route::post('cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-Route::post('/cart/{id}/increase-quantity', [CartController::class, 'increaseQuantity'])->name('cart.increase-quantity');
-Route::post('/cart/{id}/decrease-quantity', [CartController::class, 'decreaseQuantity'])->name('cart.decrease-quantity');
-Route::post('/cart/{id}/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.update-quantity');
+Route::post('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::patch('/cart/increase/{cartItemId}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
+Route::patch('/cart/decrease/{cartItemId}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+Route::patch('/cart/update/{cartItemId}', [CartController::class, 'updateQuantity'])->name('cart.update');
