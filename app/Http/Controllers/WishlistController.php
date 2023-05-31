@@ -29,7 +29,7 @@ class WishlistController extends Controller
 
         $wishlistItems = $wishlist->wishlistItems()->with('product')->get();
 
-        return view('wishlist', compact('wishlistItems'));
+        return view('wishlist', compact('wishlistItems', 'wishlist'));
     }
 
     /**

@@ -13,7 +13,10 @@
         rel="stylesheet" />
     @yield('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}">
+    {{-- if request is not tnc policy and aboutus --}}
+    @if (!request()->is('tnc') && !request()->is('policy') && !request()->is('aboutus'))
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}">
+    @endif
     <link rel="stylesheet" type="text/css" href="{{ asset('css/button.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/footer.css') }}">
@@ -169,9 +172,9 @@
                 </div>
                 <div class="footer-links-container">
                     <h5 class="footer-header">Help</h5>
-                    <a href="aboutus.html" class="footer-link">About Us</a>
-                    <a href="tnc.html" class="footer-link">Terms &amp; Conditions</a>
-                    <a href="policy.html" class="footer-link">Privacy Policy</a>
+                    <a href="{{ route('aboutus') }}" class="footer-link">About Us</a>
+                    <a href="{{ route('tnc') }}" class="footer-link">Terms &amp; Conditions</a>
+                    <a href="{{ route('policy') }}" class="footer-link">Privacy Policy</a>
                 </div>
             </div>
         </div>

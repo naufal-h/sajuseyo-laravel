@@ -71,3 +71,8 @@ Route::get('/wishlist/add/{productId}', [WishlistController::class, 'addToWishli
 Route::post('/wishlist/add/{productId}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::get('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 Route::post('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
+// Help routes
+Route::get('/tnc', [App\Http\Controllers\HelpController::class, 'tnc'])->name('tnc');
+Route::get('/aboutus', [App\Http\Controllers\HelpController::class, 'aboutus'])->name('aboutus');
+Route::get('/policy', [App\Http\Controllers\HelpController::class, 'policy'])->name('policy');

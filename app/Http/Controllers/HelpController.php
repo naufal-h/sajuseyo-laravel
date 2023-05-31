@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HelpController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,11 +19,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function tnc()
     {
+        return view('tnc');
+    }
 
-        $products = Product::with('category', 'agency')->get();
+    public function aboutus()
+    {
+        return view('aboutus');
+    }
 
-        return view('home', compact('products'));
+    public function policy()
+    {
+        return view('policy');
     }
 }
