@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HelpController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WishlistController;
 
 /*
@@ -90,3 +91,6 @@ Route::post('/addresses/{id}/set-default', [AddressController::class, 'setDefaul
 Route::get('/cities', [AddressController::class, 'getCities']);
 Route::get('/provinces', [AddressController::class, 'getProvinces']);
 Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvince'])->name('cities.by_province');
+
+// Checkout routes
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');

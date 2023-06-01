@@ -19,9 +19,9 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .cart-button-solid:hover {
@@ -388,7 +388,6 @@ input[type="checkbox"]:checked::after {
 .cart-detail-text,
 .cart-detail-title {
     line-height: 16px;
-    overflow: hidden;
 }
 .cart-detail-text {
     font-size: 16px;

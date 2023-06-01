@@ -13,7 +13,6 @@
         rel="stylesheet" />
     @yield('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    {{-- if request is not tnc policy and aboutus --}}
     @if (!request()->is('tnc') && !request()->is('policy') && !request()->is('aboutus'))
         <link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}">
     @endif

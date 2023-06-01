@@ -139,6 +139,10 @@ class AddressController extends Controller
 
         $addressData['user_id'] = auth()->id();
 
+        if (auth()->user()->addresses->isEmpty()) {
+            $addressData['is_default'] = true;
+        }
+
         $address = Address::create($addressData);
 
         return redirect()->route('addresses.index')->with('success', 'Address created successfully.');
