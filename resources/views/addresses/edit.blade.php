@@ -11,11 +11,11 @@
             <div class="width1140">
                 @include('layouts.userside')
                 <div id="user-main">
-                    <form method="POST" action="{{ route('addresses.store') }}">
+                    <form method="POST" action="{{ route('addresses.update', $address->id) }}">
                         @csrf
                         <div class="user-edit">
                             <h3 class="side_title">
-                                Add Address
+                                Edit Address
                                 <span class="required"><em class="ico_required">*</em> Required input</span>
                             </h3>
                             <div class="user-table">
@@ -27,7 +27,7 @@
                                             </th>
                                             <td>
                                                 <input placeholder="Name" id="name" name="name" class="form-control"
-                                                    value="{{ old('name') }}" type="text" />
+                                                    value="{{ $address->name }}" type="text" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -36,7 +36,7 @@
                                             </th>
                                             <td>
                                                 <input placeholder="Phone Number" id="phone" name="phone"
-                                                    class="form-control" value="{{ old('phone') }}"type="text" />
+                                                    class="form-control" value="{{ $address->phone }}" type="text" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -45,10 +45,12 @@
                                             </th>
                                             <td>
                                                 <select id="province" name="province" class="select-form form-control">
-                                                    <option value="">Select Province</option>
+
                                                     @foreach ($provinces as $province)
-                                                        <option value="{{ $province['province_id'] }}">
-                                                            {{ $province['province'] }}</option>
+                                                        <option value="{{ $province['province_id'] }}"
+                                                            {{ $address->province == $province['province'] ? 'selected' : '' }}>
+                                                            {{ $province['province'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -59,7 +61,13 @@
                                             </th>
                                             <td>
                                                 <select id="city" name="city" class="select-form form-control">
-                                                    <option value="">Select City</option>
+
+                                                    @foreach ($cities as $city)
+                                                        <option value="{{ $city['city_id'] }}"
+                                                            {{ $address->city == $city['city_name'] ? 'selected' : '' }}>
+                                                            {{ $city['city_name'] }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </td>
                                         </tr>
@@ -68,8 +76,8 @@
                                                 <em class="ico_required">*</em>Address
                                             </th>
                                             <td>
-                                                <input id="address" name="address" placeholder="Address" value=""
-                                                    type="text" />
+                                                <input id="address" name="address" placeholder="Address"
+                                                    value="{{ $address->address }}" type="text" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -78,7 +86,7 @@
                                             </th>
                                             <td>
                                                 <input id="postal_code" name="postal_code" placeholder="Postal Code"
-                                                    value="" type="text" />
+                                                    value="{{ $address->postal_code }}" type="text" />
                                             </td>
                                         </tr>
                                     </tbody>

@@ -21,9 +21,9 @@
                                 <div>
                                     <div class="add-address-wrap">
                                         <div style="display: flex">
-                                            <button class="btn-addnew-addr">
+                                            <a href="{{ route('addresses.create') }}"class="btn-addnew-addr">
                                                 <div>Add New Address</div>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -47,9 +47,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="address-main-card-lasto">
-                                                        <button class="address-main-card-lasto-btn">
-                                                            Edit</button>
-                                                        <form action="{{ route('address.destroy', $address->id) }}"
+                                                        <a href="{{ route('addresses.edit', $address->id) }}"
+                                                            class="address-main-card-lasto-btn">
+                                                            Edit</a>
+                                                        <form action="{{ route('addresses.destroy', $address->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')

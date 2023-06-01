@@ -84,6 +84,9 @@ Route::get('/address', [AddressController::class, 'index'])->name('addresses.ind
 Route::get('/address/create', [AddressController::class, 'create'])->name('addresses.create');
 Route::post('/address', [AddressController::class, 'store'])->name('addresses.store');
 Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('addresses.edit');
-Route::put('/address/{address}', [AddressController::class, 'update'])->name('addresses.update');
+Route::post('/address/{address}', [AddressController::class, 'update'])->name('addresses.update');
 Route::delete('/address/{address}', [AddressController::class, 'destroy'])->name('addresses.destroy');
 Route::post('/addresses/{id}/set-default', [AddressController::class, 'setDefault'])->name('addresses.set_default');
+Route::get('/cities', [AddressController::class, 'getCities']);
+Route::get('/provinces', [AddressController::class, 'getProvinces']);
+Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvince'])->name('cities.by_province');

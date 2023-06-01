@@ -56,7 +56,7 @@
     </div>
 @elseif(Request::is('wishlist'))
     <div class="sidebar">
-        <div class="text-label">Celeb</div>
+        <div class="text-label">Wishlist</div>
         <hr />
     </div>
 @endif
