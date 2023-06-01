@@ -46,11 +46,9 @@ class OrderController extends Controller
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->first();
         $cartItems = $cart->cartItems;
-        $totalAmount = $cartItems->sum(function ($cartItem) {
-            return $cartItem->product->price * $cartItem->quantity;
-        });
 
-        return view('checkout', compact('cartItems', 'totalAmount', 'address'));
+
+        return view('checkout', compact('cartItems', 'address'));
     }
 
     public function placeOrder(Request $request)

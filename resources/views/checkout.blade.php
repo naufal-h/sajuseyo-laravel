@@ -1,3 +1,7 @@
+@php
+    $overallSubtotal = 0;
+@endphp
+
 @extends('layouts.main')
 
 @section('styles')
@@ -78,11 +82,17 @@
 
                                             <div class="product-info-wrap">
                                                 @if ($cartItem->product->discounted_price)
+                                                    @php
+                                                        $overallSubtotal += $cartItem->product->discounted_price * $cartItem->quantity;
+                                                    @endphp
                                                     <span class="product-info-text">
                                                         Rp.
                                                         {{ number_format($cartItem->product->discounted_price, 0, '.', '.') }}
                                                     </span>
                                                 @else
+                                                    @php
+                                                        $overallSubtotal += $cartItem->product->price * $cartItem->quantity;
+                                                    @endphp
                                                     <span class="product-info-text product-info-text-discounted">
                                                         Rp.
                                                         {{ number_format($cartItem->product->price, 0, '.', '.') }}
@@ -125,7 +135,9 @@
                                 <div class="checkout-main-total-qty">Total (
                                     {{ app('App\Http\Controllers\CartController')->getCartTotalQuantity() }}
                                     item(s)):</div>
-                                <div class="checkout-main-total-price">{{ number_format($totalAmount, 0, '.', '.') }}</div>
+                                <div class="checkout-main-total-price">
+                                    Rp. {{ number_format($overallSubtotal, 0, '.', '.') }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,7 +194,7 @@
                         Subtotal:
                     </div>
                     <div class="checkout-bottom-item checkout-bottom-item-right checkout-bottom-item-1st">
-                        Rp. 1.050.0000
+                        Rp. {{ number_format($overallSubtotal, 0, '.', '.') }}
                     </div>
                     <div class="checkout-bottom-item checkout-bottom-item-left checkout-bottom-item-2nd">
                         Shipping Fee:
