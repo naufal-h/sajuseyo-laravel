@@ -134,9 +134,16 @@
             <div class="co-qty">Total ({{ $totalQuantity }} item(s)):</div>
             <div class="co-price">Rp. {{ number_format($overallSubtotal, 0, '.', '.') }}</div>
         </div>
-        <button class="cart-button-solid">
-            <a href="checkout.html" class="co-btn">Checkout</a>
-        </button>
+
+        @if (count($cartItems) > 0)
+            <button class="cart-button-solid">
+                <a href="{{ route('checkout') }}" class="co-btn">Checkout</a>
+            </button>
+        @else
+            <button class="cart-button-solid" disabled>
+                <a class="co-btn" disabled>Checkout</a>
+            </button>
+        @endif
     </div>
     <script>
         function submitOnEnter(event) {

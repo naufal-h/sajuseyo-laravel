@@ -94,3 +94,4 @@ Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvin
 
 // Checkout routes
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('checkout.place_order');

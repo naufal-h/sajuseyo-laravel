@@ -55,8 +55,8 @@ class OrderController extends Controller
 
     public function placeOrder(Request $request)
     {
-        $user = auth()->user();
-        $cart = $user->cart;
+        $user = Auth::user();
+        $cart = Cart::where('user_id', $user->id)->first();
         $cartItems = $cart->cartItems;
         $totalAmount = $cartItems->sum(function ($cartItem) {
             return $cartItem->product->price * $cartItem->quantity;
@@ -65,7 +65,7 @@ class OrderController extends Controller
         $user = User::find(Auth::id());
 
         $order = $user->orders()->create([
-            'address_id' => $request->address_id,
+            'address_id' => $user->addresses()->where('is_default', 1)->first()->id,
             'total_amount' => $totalAmount,
         ]);
 
