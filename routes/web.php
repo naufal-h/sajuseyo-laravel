@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\WishlistController;
 
 /*
@@ -73,6 +75,15 @@ Route::get('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'rem
 Route::post('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
 // Help routes
-Route::get('/tnc', [App\Http\Controllers\HelpController::class, 'tnc'])->name('tnc');
-Route::get('/aboutus', [App\Http\Controllers\HelpController::class, 'aboutus'])->name('aboutus');
-Route::get('/policy', [App\Http\Controllers\HelpController::class, 'policy'])->name('policy');
+Route::get('/tnc', [HelpController::class, 'tnc'])->name('tnc');
+Route::get('/aboutus', [HelpController::class, 'aboutus'])->name('aboutus');
+Route::get('/policy', [HelpController::class, 'policy'])->name('policy');
+
+// Address routes
+Route::get('/address', [AddressController::class, 'index'])->name('addresses.index');
+Route::get('/address/create', [AddressController::class, 'create'])->name('addresses.create');
+Route::post('/address', [AddressController::class, 'store'])->name('addresses.store');
+Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('addresses.edit');
+Route::put('/address/{address}', [AddressController::class, 'update'])->name('addresses.update');
+Route::delete('/address/{address}', [AddressController::class, 'destroy'])->name('addresses.destroy');
+Route::post('/addresses/{id}/set-default', [AddressController::class, 'setDefault'])->name('addresses.set_default');
