@@ -94,7 +94,8 @@ input {
     font-weight: 400;
 }
 .user-edit .user-table td input[type="password"],
-.user-edit .user-table td input[type="text"] {
+.user-edit .user-table td input[type="text"],
+.user-edit .user-table td input[type="email"] {
     width: 780px;
     height: 54px;
     line-height: 54px;
@@ -180,7 +181,8 @@ input[type="radio"] {
     border: 0;
 }
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+input[type="email"] {
     height: 18px;
     line-height: 20px;
     padding: 2px 4px;
@@ -337,6 +339,10 @@ body {
 .user-mid ul li a:hover {
     color: #eab8c0;
 }
+
+.usermid-act {
+    color: #eab8c0 !important;
+}
 .user-mid ul li a:hover span {
     opacity: 1;
 }
@@ -400,8 +406,8 @@ body {
     margin-right: 70px;
 }
 .user-top .user-topleft .pfp img {
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -469,4 +475,35 @@ body {
 .user-container,
 .user-wrap {
     width: 100% !important;
+}
+
+.overlay {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 15px;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pfp:hover .overlay {
+    opacity: 1;
+}
+
+.change-pfp-text {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
 }

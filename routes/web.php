@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 
 /*
@@ -95,3 +96,8 @@ Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvin
 // Checkout routes
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('checkout.place_order');
+
+// User routes
+Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+Route::post('/profile/{user}', [UserController::class, 'update'])->name('users.update');
+Route::post('/profile/{user}/update-profile-picture', [UserController::class, 'updateProfilePicture'])->name('users.updateProfilePicture');

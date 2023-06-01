@@ -6,7 +6,7 @@
             <a href="./orders.html">Order History </a>
         </li>
         <li>
-            <a href="wishlist.html">Wish List </a>
+            <a href="{{ route('wishlist.show') }}">Wish List </a>
         </li>
         <li>
             <a href="coupon.html">Coupons </a>
@@ -15,13 +15,14 @@
     <ul>
         <li class="first_li">My Profile</li>
         <li>
-            <a href="user.html">Edit Profile </a>
+            <a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'usermid-act' : '' }}">Edit Profile </a>
         </li>
         <li>
-            <a href="address.html">Address </a>
+            <a href="{{ route('addresses.index') }}" class="{{ Request::is('address*') ? 'usermid-act' : '' }}">Address
+            </a>
         </li>
         <li>
-            <a href="home.html">Logout </a>
+            <a href="{{ route('logout') }}">Logout </a>
         </li>
     </ul>
 </div>
