@@ -122,21 +122,13 @@
     </div>
     <div class="wrapper cart-bottom">
         <div class="voucher-col">
-            <div class="voucher-text">Enter Promo Code :</div>
-            <input class="voucher-inp" type="text" />
+
         </div>
 
-        <div class="voucher-dsc">
-            <div class="voucher-dsc-text">Discount :</div>
-        </div>
-        <div class="voucher-dsc-total">-Rp0</div>
+
+
         <div class="cart-checkout">
-            <div class="select-all-check">
-                <label class="checkbox checkbox-field">
-                    <input type="checkbox" name="checkbox" data-name="Checkbox" class="checkbox-input checkbox-2" />
-                </label>
-            </div>
-            <button class="remove-btn">Select All</button><button class="remove-btn remove-selected">Remove</button>
+
         </div>
         <div class="co-info">
             <div class="co-qty">Total ({{ $totalQuantity }} item(s)):</div>
