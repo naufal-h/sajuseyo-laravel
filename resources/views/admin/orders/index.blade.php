@@ -11,7 +11,7 @@
                 <div>
                     <h1>Orders</h1>
                     <p class="breadcrumbs">
-                        <span><a href="index.html">Home</a></span>
+                        <span><a href="{{ route('admin.dashboard') }}">Home</a></span>
                         <span><img src="/assets/svg/arrow-down.svg" style="transform: rotate(-90deg)"
                                 alt="" /></span>Orders
                     </p>
@@ -32,7 +32,7 @@
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>
-                                            <th>Product Name</th>
+                                            <th>User Name</th>
                                             <th class="row-title">Qty</th>
                                             <th class="row-title">Date</th>
                                             <th class="row-title">Total</th>
@@ -48,7 +48,7 @@
                                                     {{ $order->id }}
                                                 </td>
                                                 <td>
-                                                    <a class="" href="">
+                                                    <a class="" href="{{ route('admin.orders.edit', $order->id) }}">
                                                         {{ $order->user->name }}
                                                     </a>
                                                 </td>
@@ -59,11 +59,23 @@
                                                     {{ $order->created_at->format('d-m-Y') }}
                                                 </td>
                                                 <td class="row-title">
-                                                    {{ $order->total_amount }}
+                                                    Rp. {{ number_format($order->total_amount, 0, '.', '.') }}
                                                 </td>
                                                 <td>
-                                                    <span class="badge badge-danger">
-                                                        {{ $order->orderStatus->name }}
+                                                    @if ($order->orderStatus->id == 1)
+                                                        <span class="badge badge-confirmed">
+                                                        @elseif ($order->orderStatus->id == 2)
+                                                            <span class="badge badge-paid">
+                                                            @elseif ($order->orderStatus->id == 3)
+                                                                <span class="badge badge-warning">
+                                                                @elseif ($order->orderStatus->id == 4)
+                                                                    <span class="badge badge-primary">
+                                                                    @elseif ($order->orderStatus->id == 5)
+                                                                        <span class="badge badge-success">
+                                                                        @elseif ($order->orderStatus->id == 6)
+                                                                            <span class="badge badge-danger">
+                                                    @endif
+                                                    {{ $order->orderStatus->name }}
                                                     </span>
                                                 </td>
                                             </tr>

@@ -71,17 +71,17 @@
                                     <div class="detail-order-head">
                                         <div>
                                             <span>Order ID : {{ $order->id }}</span><span class="divider">|</span>
-                                            @if ($order->order_statuses_id == 1)
+                                            @if ($order->order_status_id == 1)
                                                 Confirmation received for your order
-                                            @elseif ($order->order_statuses_id == 2)
+                                            @elseif ($order->order_status_id == 2)
                                                 Payment successful for your order
-                                            @elseif ($order->order_statuses_id == 3)
+                                            @elseif ($order->order_status_id == 3)
                                                 Your order is being prepared
-                                            @elseif ($order->order_statuses_id == 4)
+                                            @elseif ($order->order_status_id == 4)
                                                 Your order is on the way
-                                            @elseif ($order->order_statuses_id == 5)
+                                            @elseif ($order->order_status_id == 5)
                                                 Order successfully completed
-                                            @elseif ($order->order_statuses_id == 6)
+                                            @elseif ($order->order_status_id == 6)
                                                 Your order has been canceled
                                             @endif
                                         </div>
