@@ -140,6 +140,22 @@ class OrderController extends Controller
         $user = User::find(Auth::id());
         $order = $user->orders()->findOrFail($id);
 
-        return view('order-details', compact('order'));
+        return view('user.order-details', compact('order'));
+    }
+
+    // update order status to completed
+    public function completeOrder($id)
+    {
+        $user = User::find(Auth::id());
+        $order = $user->orders()->findOrFail($id);
+
+        $order->orderStatusHistories()->create([
+            'order_status_id' => 5,
+        ]);
+
+        $order->order_status_id = 5;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Order completed successfully.');
     }
 }

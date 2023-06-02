@@ -232,7 +232,7 @@
     background: #e0e0e0;
 }
 .status-flow-line-foreground {
-    background: #eab8c0;
+    background: #e0e0e0;
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .detail-order-status {

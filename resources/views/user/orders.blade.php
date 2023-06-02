@@ -74,7 +74,7 @@
                                             @if ($order->order_status_id == 1)
                                                 Confirmation received for your order
                                             @elseif ($order->order_status_id == 2)
-                                                Payment successful for your order
+                                                Waiting for payment confirmation
                                             @elseif ($order->order_status_id == 3)
                                                 Your order is being prepared
                                             @elseif ($order->order_status_id == 4)

@@ -110,3 +110,5 @@ Route::get('/user/profile', [UserController::class, 'showProfile'])->name('profi
 Route::post('/user/profile/{user}', [UserController::class, 'update'])->name('users.update');
 Route::post('/user/profile/{user}/update-profile-picture', [UserController::class, 'updateProfilePicture'])->name('users.updateProfilePicture');
 Route::get('/user/orders', [OrderController::class, 'showOrders'])->name('orders');
+Route::get('/user/orders/{order}', [OrderController::class, 'orderDetails'])->name('orders.show');
+Route::post('/user/orders/{order}/complete', [OrderController::class, 'completeOrder'])->name('orders.complete');
