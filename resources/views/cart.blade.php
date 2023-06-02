@@ -36,7 +36,7 @@
                                     <a class="cart-detail-text" title="RED VELVET - 8TH ANNIVERSARY - LUCKY CARD SET"
                                         href="/detprod.html">{{ $cartItem->product->name }}</a>
 
-                                    <span class="varian">SM Ent.</span>
+                                    <span class="varian">{{ $cartItem->product->agency->name }}</span>
 
 
                                 </div>

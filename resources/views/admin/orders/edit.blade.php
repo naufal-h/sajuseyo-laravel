@@ -21,8 +21,20 @@
             <div>
                 <div>
                     <div class="order-detail-product-wrap">Order Status :
-                        <span class="badge badge-danger">
-                            {{ $order->orderStatus->name }}
+                        @if ($order->orderStatus->id == 1)
+                            <span class="badge badge-confirmed">
+                            @elseif ($order->orderStatus->id == 2)
+                                <span class="badge badge-paid">
+                                @elseif ($order->orderStatus->id == 3)
+                                    <span class="badge badge-warning">
+                                    @elseif ($order->orderStatus->id == 4)
+                                        <span class="badge badge-primary">
+                                        @elseif ($order->orderStatus->id == 5)
+                                            <span class="badge badge-success">
+                                            @elseif ($order->orderStatus->id == 6)
+                                                <span class="badge badge-danger">
+                        @endif
+                        {{ $order->orderStatus->name }}
                         </span>
                         <div style="margin: 10px 10px 10px 10px"></div>
                         @foreach ($order->orderItems()->with('product')->get() as $orderItem)

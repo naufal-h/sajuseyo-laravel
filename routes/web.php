@@ -50,6 +50,8 @@ Route::middleware(['admin'])->group(function () {
         return redirect('/admin/dashboard');
     })->name('admin.dashboard');
 
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+
     // CRUD Products 
     Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
     Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');

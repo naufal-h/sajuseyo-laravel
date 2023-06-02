@@ -74,8 +74,7 @@
                                                         class="product-info-text">{{ $cartItem->product->name }}</span>
                                                     <div class="product-info-category">
                                                         <span
-                                                            class="product-info-category-wrap product-info-category-text">SM
-                                                            Ent.</span>
+                                                            class="product-info-category-wrap product-info-category-text">{{ $cartItem->product->agency->name }}</span>
                                                     </div>
                                                 </span>
                                             </div>

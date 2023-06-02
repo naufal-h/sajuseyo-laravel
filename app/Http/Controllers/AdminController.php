@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderStatus;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -36,5 +37,12 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('admin.orders.index')->with('success', 'Order status updated successfully');
+    }
+
+    public function users()
+    {
+        $users = User::all();
+
+        return view('admin.users', compact('users'));
     }
 }
