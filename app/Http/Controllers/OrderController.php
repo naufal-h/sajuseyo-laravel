@@ -149,7 +149,7 @@ class OrderController extends Controller
         $user = User::find(Auth::id());
         $order = $user->orders()->findOrFail($id);
 
-        $order->orderStatusHistories()->create([
+        $order->orderStatusHistories()->updateOrCreate([
             'order_status_id' => 5,
         ]);
 
