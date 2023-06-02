@@ -147,9 +147,12 @@
         @if (count($cartItems) > 0)
             @if (count(auth()->user()->addresses) > 0)
                 @if ($canCheckout)
-                    <button class="cart-button-solid">
-                        <a href="{{ route('checkout') }}" class="co-btn">Checkout</a>
-                    </button>
+                    <form action="{{ route('checkout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="cart-button-solid">
+                            <a class="co-btn">Checkout</a>
+                        </button>
+                    </form>
                 @else
                     <button class="cart-button-solid" disabled>
                         <a class="co-btn" disabled>Checkout</a>

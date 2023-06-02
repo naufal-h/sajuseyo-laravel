@@ -94,8 +94,8 @@ Route::get('/provinces', [AddressController::class, 'getProvinces']);
 Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvince'])->name('cities.by_province');
 
 // Checkout routes
-Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
-Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('checkout.place_order');
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::post('/placeOrder', [OrderController::class, 'placeOrder'])->name('checkout.place_order');
 
 // User routes
 Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');

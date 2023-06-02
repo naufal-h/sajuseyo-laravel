@@ -11,6 +11,11 @@
     text-align: center;
     border-radius: 50px;
     grid-column-start: 3;
+    cursor: pointer;
+}
+
+.cart-button-solid[disabled] {
+    cursor: not-allowed;
 }
 
 input::-webkit-outer-spin-button,
