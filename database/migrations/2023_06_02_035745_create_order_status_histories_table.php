@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('order_status_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id')->index();
-            $table->unsignedBigInteger('order_statuses_id')->index();
+            $table->unsignedBigInteger('order_status_id')->index();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('order_statuses_id')->references('id')->on('order_statuses')->onDelete('cascade');
+            $table->foreign('order_status_id')->references('id')->on('order_statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }

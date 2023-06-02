@@ -101,15 +101,15 @@ class OrderController extends Controller
             'address_city' => $address->city,
             'address_province' => $address->province,
             'address_postal_code' => $address->postal_code,
-            'order_statuses_id' => 2,
+            'order_status_id' => 2,
         ]);
 
         $order->orderStatusHistories()->create([
-            'order_statuses_id' => 1,
+            'order_status_id' => 1,
         ]);
 
         $order->orderStatusHistories()->create([
-            'order_statuses_id' => 2,
+            'order_status_id' => 2,
         ]);
 
         $cartItems->each(function ($cartItem) use ($order) {

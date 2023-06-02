@@ -14,12 +14,12 @@ class OrderStatusSeeder extends Seeder
     public function run(): void
     {
         $order_statuses = [
-            ['name' => 'confirmed'],
-            ['name' => 'paid'],
-            ['name' => 'prepared'],
-            ['name' => 'delivered'],
-            ['name' => 'completed'],
-            ['name' => 'cancelled'],
+            ['name' => 'Confirmed'],
+            ['name' => 'Paid'],
+            ['name' => 'Prepared'],
+            ['name' => 'Delivered'],
+            ['name' => 'Completed'],
+            ['name' => 'Cancelled'],
 
         ];
         OrderStatus::insert($order_statuses);

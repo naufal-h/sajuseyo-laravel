@@ -10,7 +10,8 @@ class OrderStatusHistory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_statuses_id',
+        'order_id',
+        'order_status_id',
     ];
 
     public function order()

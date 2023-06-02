@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -49,6 +50,7 @@ Route::middleware(['admin'])->group(function () {
         return redirect('/admin/dashboard');
     })->name('admin.dashboard');
 
+    // CRUD Products 
     Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
     Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
     Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
@@ -57,6 +59,9 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
     Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
     Route::resource('products', 'ProductController');
+
+    // Orders List
+    Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin.orders.index');
 });
 
 // Cart routes
