@@ -82,13 +82,13 @@ Route::get('/aboutus', [HelpController::class, 'aboutus'])->name('aboutus');
 Route::get('/policy', [HelpController::class, 'policy'])->name('policy');
 
 // Address routes
-Route::get('/address', [AddressController::class, 'index'])->name('addresses.index');
-Route::get('/address/create', [AddressController::class, 'create'])->name('addresses.create');
-Route::post('/address', [AddressController::class, 'store'])->name('addresses.store');
-Route::get('/address/{address}/edit', [AddressController::class, 'edit'])->name('addresses.edit');
-Route::post('/address/{address}', [AddressController::class, 'update'])->name('addresses.update');
-Route::delete('/address/{address}', [AddressController::class, 'destroy'])->name('addresses.destroy');
-Route::post('/addresses/{id}/set-default', [AddressController::class, 'setDefault'])->name('addresses.set_default');
+Route::get('/user/address', [AddressController::class, 'index'])->name('addresses.index');
+Route::get('/user/address/create', [AddressController::class, 'create'])->name('addresses.create');
+Route::post('/user/address', [AddressController::class, 'store'])->name('addresses.store');
+Route::get('/user/address/{address}/edit', [AddressController::class, 'edit'])->name('addresses.edit');
+Route::post('/user/address/{address}', [AddressController::class, 'update'])->name('addresses.update');
+Route::delete('/user/address/{address}', [AddressController::class, 'destroy'])->name('addresses.destroy');
+Route::post('/user/addresses/{id}/set-default', [AddressController::class, 'setDefault'])->name('addresses.set_default');
 Route::get('/cities', [AddressController::class, 'getCities']);
 Route::get('/provinces', [AddressController::class, 'getProvinces']);
 Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvince'])->name('cities.by_province');
@@ -98,6 +98,7 @@ Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout')
 Route::post('/placeOrder', [OrderController::class, 'placeOrder'])->name('checkout.place_order');
 
 // User routes
-Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
-Route::post('/profile/{user}', [UserController::class, 'update'])->name('users.update');
-Route::post('/profile/{user}/update-profile-picture', [UserController::class, 'updateProfilePicture'])->name('users.updateProfilePicture');
+Route::get('/user/profile', [UserController::class, 'showProfile'])->name('profile');
+Route::post('/user/profile/{user}', [UserController::class, 'update'])->name('users.update');
+Route::post('/user/profile/{user}/update-profile-picture', [UserController::class, 'updateProfilePicture'])->name('users.updateProfilePicture');
+Route::get('/user/orders', [OrderController::class, 'showOrders'])->name('orders');

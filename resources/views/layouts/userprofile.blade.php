@@ -6,7 +6,8 @@
                         @if (auth()->user()->profile_picture)
                             <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" />
                         @else
-                            <img src="assets/detprod/manyun.jpg" />
+                            <img
+                                src="https://dummyimage.com/765x765/eab8c1/ffffff.jpg&text=Insert+Image+Here+(1:1+Ratio)" />
                         @endif
                         <div class="overlay" onclick="document.getElementById('profile-picture-input').click()">
                             <span class="change-pfp-text">Change Profile
@@ -34,7 +35,7 @@
                         <ul class="order">
                             <li>
                                 <strong>Order History</strong>
-                                <a href="./orders.html" class="count">
+                                <a href="{{ route('orders') }}" class="count">
                                     <span>{{ auth()->user()->orders->count() }}</span>
                                 </a>
                             </li>

@@ -3,7 +3,8 @@
     <ul class="first_ul">
         <li class="first_li">My Account</li>
         <li>
-            <a href="./orders.html">Order History </a>
+            <a href="{{ route('orders') }}" class="{{ Request::is('user/orders') ? 'usermid-act' : '' }}">Order History
+            </a>
         </li>
         <li>
             <a href="{{ route('wishlist.show') }}">Wish List </a>
@@ -15,10 +16,12 @@
     <ul>
         <li class="first_li">My Profile</li>
         <li>
-            <a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'usermid-act' : '' }}">Edit Profile </a>
+            <a href="{{ route('profile') }}" class="{{ Request::is('user/profile') ? 'usermid-act' : '' }}">Edit Profile
+            </a>
         </li>
         <li>
-            <a href="{{ route('addresses.index') }}" class="{{ Request::is('address*') ? 'usermid-act' : '' }}">Address
+            <a href="{{ route('addresses.index') }}"
+                class="{{ Request::is('user/address*') ? 'usermid-act' : '' }}">Address
             </a>
         </li>
         <li>

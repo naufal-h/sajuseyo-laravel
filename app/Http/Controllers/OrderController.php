@@ -104,7 +104,6 @@ class OrderController extends Controller
             'order_statuses_id' => 2,
         ]);
 
-        // create the orderstatus history
         $order->orderStatusHistories()->create([
             'order_statuses_id' => 1,
         ]);
@@ -129,11 +128,11 @@ class OrderController extends Controller
         return redirect()->route('home')->with('success', 'Order placed successfully.');
     }
 
-    public function orders()
+    public function showOrders()
     {
         $orders = auth()->user()->orders;
 
-        return view('orders', compact('orders'));
+        return view('user.orders', compact('orders'));
     }
 
     public function orderDetails($id)
