@@ -56,8 +56,14 @@ class OrderController extends Controller
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->first();
         $cartItems = $cart->cartItems;
-        $totalAmount = $cartItems->sum(function ($cartItem) {
-            return $cartItem->product->price * $cartItem->quantity;
+
+        $totalAmount = 0;
+        $cartItems->each(function ($cartItem) use ($request, &$totalAmount) {
+            if ($cartItem->product->discounted_price) {
+                $totalAmount += $cartItem->product->discounted_price * $cartItem->quantity;
+            } else {
+                $totalAmount += $cartItem->product->price * $cartItem->quantity;
+            }
         });
 
         $user = User::find(Auth::id());
@@ -71,8 +77,11 @@ class OrderController extends Controller
             $order->orderItems()->create([
                 'product_id' => $cartItem->product_id,
                 'quantity' => $cartItem->quantity,
-                'items_price' => $cartItem->product->price * $cartItem->quantity,
+                'items_price' => $cartItem->product->discounted_price ? $cartItem->product->discounted_price * $cartItem->quantity : $cartItem->product->price * $cartItem->quantity,
             ]);
+            $product = $cartItem->product;
+            $product->stock -= $cartItem->quantity;
+            $product->save();
         });
 
         $cart->delete();

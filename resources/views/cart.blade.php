@@ -154,7 +154,9 @@
                     <button class="cart-button-solid" disabled>
                         <a class="co-btn" disabled>Checkout</a>
                     </button>
-                    <span class="sold-out">SOLD OUT</span>
+                    <span class="sold-out">
+                        Some of your items are sold out
+                    </span>
                 @endif
             @else
                 <button class="cart-button-solid" disabled>
