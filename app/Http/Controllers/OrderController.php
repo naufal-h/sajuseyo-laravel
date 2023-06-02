@@ -53,9 +53,34 @@ class OrderController extends Controller
 
     public function placeOrder(Request $request)
     {
+        $rajaOngkir = new Client();
+        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $baseUrl = 'https://api.rajaongkir.com/starter/';
+
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->first();
         $cartItems = $cart->cartItems;
+        $user = User::find(Auth::id());
+        $address = $user->addresses()->where('is_default', 1)->first();
+
+        $response = $rajaOngkir->request('GET', $baseUrl . 'province?id=' . $address->province, [
+            'headers' => [
+                'key' => $apiKey,
+            ],
+        ]);
+
+        $provinceName = json_decode($response->getBody(), true)['rajaongkir']['results']['province'];
+
+        $response = $rajaOngkir->request('GET', $baseUrl . 'city?id=' . $address->city, [
+            'headers' => [
+                'key' => $apiKey,
+            ],
+        ]);
+
+        $cityName = json_decode($response->getBody(), true)['rajaongkir']['results']['city_name'];
+
+        $address->province = $provinceName;
+        $address->city = $cityName;
 
         $totalAmount = 0;
         $cartItems->each(function ($cartItem) use ($request, &$totalAmount) {
@@ -66,11 +91,26 @@ class OrderController extends Controller
             }
         });
 
-        $user = User::find(Auth::id());
+
 
         $order = $user->orders()->create([
-            'address_id' => $user->addresses()->where('is_default', 1)->first()->id,
             'total_amount' => $totalAmount,
+            'address_name' => $address->name,
+            'address_phone' => $address->phone,
+            'address_address' => $address->address,
+            'address_city' => $address->city,
+            'address_province' => $address->province,
+            'address_postal_code' => $address->postal_code,
+            'order_statuses_id' => 2,
+        ]);
+
+        // create the orderstatus history
+        $order->orderStatusHistories()->create([
+            'order_statuses_id' => 1,
+        ]);
+
+        $order->orderStatusHistories()->create([
+            'order_statuses_id' => 2,
         ]);
 
         $cartItems->each(function ($cartItem) use ($order) {

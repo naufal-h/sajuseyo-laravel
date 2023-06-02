@@ -14,12 +14,18 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('address_id')->index();
+            $table->unsignedBigInteger('order_statuses_id')->index();
+            $table->string('address_name');
+            $table->string('address_phone');
+            $table->string('address_address');
+            $table->string('address_city');
+            $table->string('address_province');
+            $table->string('address_postal_code');
             $table->integer('total_amount');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->foreign('order_statuses_id')->references('id')->on('order_statuses')->onDelete('cascade');
         });
     }
 

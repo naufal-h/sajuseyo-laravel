@@ -11,12 +11,28 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
-        'address_id',
+        'order_statuses_id',
+        'address_name',
+        'address_phone',
+        'address_address',
+        'address_city',
+        'address_province',
+        'address_postal_code',
         'total_amount',
     ];
 
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function orderStatusHistories()
+    {
+        return $this->hasMany(OrderStatusHistory::class);
+    }
+
+    public function orderStatus()
+    {
+        return $this->belongsTo(OrderStatus::class);
     }
 }
