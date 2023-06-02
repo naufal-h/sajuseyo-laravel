@@ -1,6 +1,7 @@
 @php
     $overallSubtotal = 0;
     $totalQuantity = 0;
+    $canCheckout = true;
 @endphp
 
 @extends('layouts.main')
@@ -112,6 +113,14 @@
                         <div class="cart-remove-item">
                             <a href="{{ route('cart.remove', $cartItem->id) }}"class="remove-btn">Remove</a>
                         </div>
+
+                        @if ($cartItem->product->stock < $cartItem->quantity)
+                            @php
+                                $canCheckout = false;
+                            @endphp
+                        @endif
+
+
                     </div>
                 </div>
             </div>
@@ -137,18 +146,27 @@
 
         @if (count($cartItems) > 0)
             @if (count(auth()->user()->addresses) > 0)
-                <button class="cart-button-solid">
-                    <a href="{{ route('checkout') }}" class="co-btn">Checkout</a>
-                </button>
+                @if ($canCheckout)
+                    <button class="cart-button-solid">
+                        <a href="{{ route('checkout') }}" class="co-btn">Checkout</a>
+                    </button>
+                @else
+                    <button class="cart-button-solid" disabled>
+                        <a class="co-btn" disabled>Checkout</a>
+                    </button>
+                    <span class="sold-out">SOLD OUT</span>
+                @endif
             @else
                 <button class="cart-button-solid" disabled>
                     <a class="co-btn" disabled>Checkout</a>
                 </button>
+                <span class="sold-out">Please add an address first</span>
             @endif
         @else
             <button class="cart-button-solid" disabled>
                 <a class="co-btn" disabled>Checkout</a>
             </button>
+            <span class="sold-out">Your cart is empty</span>
         @endif
     </div>
     <script>
