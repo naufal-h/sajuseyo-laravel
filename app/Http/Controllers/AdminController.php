@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderStatus;
+use App\Models\Product;
 use App\Models\User;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $orders = Order::with('orderItems')->orderBy('created_at', 'desc')->limit(5)->get();
+        $products = Product::withCount('orderItems')->orderBy('order_items_count', 'desc')->limit(5)->get();
+        $users = User::whereHas('orders')->orderBy('created_at', 'desc')->limit(5)->get();
+        return view('admin.dashboard', compact('orders', 'products', 'users'));
     }
 
     public function orders()

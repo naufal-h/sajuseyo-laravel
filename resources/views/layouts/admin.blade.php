@@ -176,16 +176,7 @@
                     </button>
                     <div class="search-form">
                         <div class="input-group">
-                            <input type="text" name="query" id="search-input" class="form-control"
-                                placeholder="search.." autofocus="" autocomplete="off" />
-                            <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                                <svg width="20" height="20" viewBox="0 0 22 22" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M9.16675 0.916992C4.6104 0.916992 0.916748 4.61065 0.916748 9.16699C0.916748 13.7234 4.6104 17.417 9.16675 17.417C11.1147 17.417 12.9049 16.7419 14.3163 15.6129L18.6019 19.8985C18.9599 20.2565 19.5403 20.2565 19.8983 19.8985C20.2562 19.5405 20.2562 18.9601 19.8983 18.6022L15.6127 14.3166C16.7416 12.9052 17.4167 11.1149 17.4167 9.16699C17.4167 4.61065 13.7231 0.916992 9.16675 0.916992ZM2.75008 9.16699C2.75008 5.62317 5.62292 2.75033 9.16675 2.75033C12.7106 2.75033 15.5834 5.62317 15.5834 9.16699C15.5834 12.7108 12.7106 15.5837 9.16675 15.5837C5.62292 15.5837 2.75008 12.7108 2.75008 9.16699Z"
-                                        fill="#1C2331" />
-                                </svg>
-                            </button>
+
                         </div>
                         <div id="search-results-container">
                             <ul id="search-results"></ul>

@@ -32,8 +32,7 @@
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>
-                                            <th>User Name</th>
-                                            <th class="row-title">Qty</th>
+                                            <th>Products Name</th>
                                             <th class="row-title">Date</th>
                                             <th class="row-title">Total</th>
                                             <th>Status</th>
@@ -49,14 +48,16 @@
                                                 </td>
                                                 <td>
                                                     <a class="" href="{{ route('admin.orders.edit', $order->id) }}">
-                                                        {{ $order->user->name }}
+                                                        @foreach ($order->orderItems as $item)
+                                                            {{ $item->product->name }}
+                                                            @if (!$loop->last)
+                                                                ,
+                                                            @endif
+                                                        @endforeach
                                                     </a>
                                                 </td>
                                                 <td class="row-title">
-                                                    {{ $order->orderItems->sum('quantity') }}
-                                                </td>
-                                                <td class="row-title">
-                                                    {{ $order->created_at->format('d-m-Y') }}
+                                                    {{ $order->created_at->format('d-m-Y H:i') }}
                                                 </td>
                                                 <td class="row-title">
                                                     Rp. {{ number_format($order->total_amount, 0, '.', '.') }}

@@ -11,8 +11,29 @@
                 <div class="column-xtrlarge">
                     <div class="card card-mini dash-card card-2">
                         <div class="card-body">
-                            <h2 class="">3457</h2>
-                            <p>Daily Visitors</p>
+                            <h2 class="">
+                                {{ \App\Models\Product::count() }}
+                            </h2>
+                            <p>Products</p>
+                            <span class="stats-menu">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
+                                    fill="white" height="30" viewBox="0 0 50 50">
+                                    <path
+                                        d="M 4.8125 7 C 4.335938 7.089844 3.992188 7.511719 4 8 L 4 42 C 4 42.550781 4.449219 43 5 43 L 45 43 C 45.550781 43 46 42.550781 46 42 L 46 8 C 46 7.449219 45.550781 7 45 7 L 5 7 C 4.96875 7 4.9375 7 4.90625 7 C 4.875 7 4.84375 7 4.8125 7 Z M 6 9 L 44 9 L 44 41 L 6 41 Z M 21 12 C 19.355469 12 18 13.355469 18 15 C 18 16.644531 19.355469 18 21 18 L 29 18 C 30.644531 18 32 16.644531 32 15 C 32 13.355469 30.644531 12 29 12 Z M 21 14 L 29 14 C 29.554688 14 30 14.445313 30 15 C 30 15.554688 29.554688 16 29 16 L 21 16 C 20.445313 16 20 15.554688 20 15 C 20 14.445313 20.445313 14 21 14 Z M 32 28 L 30 31 L 31 31 L 31 34 L 33 34 L 33 31 L 34 31 Z M 38 28 L 36 31 L 37 31 L 37 34 L 39 34 L 39 31 L 40 31 Z M 30 35 L 30 37 L 40 37 L 40 35 Z"
+                                        stroke="white">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-xtrlarge">
+                    <div class="card card-mini dash-card card-2">
+                        <div class="card-body">
+                            <h2 class="">
+                                {{ \App\Models\User::count() }}
+                            </h2>
+                            <p>Users</p>
                             <span class="stats-menu"><svg width="31" height="25" viewBox="0 0 33 27" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -26,7 +47,9 @@
                 <div class="column-xtrlarge">
                     <div class="card card-mini dash-card card-3">
                         <div class="card-body">
-                            <h2 class="">29</h2>
+                            <h2 class="">
+                                {{ \App\Models\Order::whereDate('created_at', Carbon\Carbon::today())->count() }}
+                            </h2>
                             <p>Daily Order</p>
                             <span class="stats-menu">
                                 <svg width="30" height="30" viewBox="0 0 800 800" fill="none"
@@ -48,7 +71,10 @@
                 <div class="column-xtrlarge">
                     <div class="card card-mini dash-card card-4">
                         <div class="card-body">
-                            <h2 class="">Rp. 13.060.000</h2>
+                            <h2 class="">
+                                Rp.
+                                {{ number_format(\App\Models\Order::whereDate('created_at', Carbon\Carbon::today())->sum('total_amount'), 0, '.', '.') }}
+                            </h2>
                             <p>Daily Revenue</p>
                             <span class="stats-menu"><svg width="36" height="36" viewBox="0 0 800 800" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -94,17 +120,14 @@
                     <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                         <div class="card-header">
                             <h2>Recent Orders</h2>
-                            <div class="date-range-report">
-                                <span>Mar 1, 2023 - Mar 31, 2023</span>
-                            </div>
+
                         </div>
                         <div class="card-body">
                             <table class="table card-table table-responsive table-responsive-large" style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th>Order ID</th>
-                                        <th>Product Name</th>
-                                        <th class="row-title">Qty</th>
+                                        <th>Products Name</th>
                                         <th class="row-title">Date</th>
                                         <th class="row-title">Total</th>
                                         <th>Status</th>
@@ -112,59 +135,46 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>0005</td>
-                                        <td>
-                                            <a class="" href="">Red Velvet - ReVeluv -ACE Membership</a>
-                                        </td>
-                                        <td class="row-title">5</td>
-                                        <td class="row-title">20 Mar 2023</td>
-                                        <td class="row-title">Rp. 5.505.000</td>
-                                        <td>
-                                            <span class="badge badge-success">Completed</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>0004</td>
-                                        <td>
-                                            <a class="" href="">
-                                                Red Velvet - 8th Anniversary Acrylic Stand &#38;
-                                                AR Voice Card Set</a>
-                                        </td>
-                                        <td class="row-title">2</td>
-                                        <td class="row-title">10 Mar 2023</td>
-                                        <td class="row-title">Rp. 300.000</td>
-                                        <td>
-                                            <span class="badge badge-primary">Delivered</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>0003</td>
-                                        <td>
-                                            <a class="" href="">Red Velvet - POSTCARD + HOLOGRAM PHOTO CARD SET
-                                                -
-                                                Feel My Rhythm</a>
-                                        </td>
-                                        <td class="row-title">1</td>
-                                        <td class="row-title">4 Mar 2023</td>
-                                        <td class="row-title">Rp. 120.000</td>
-                                        <td>
-                                            <span class="badge badge-warning">Prepared</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>0002</td>
-                                        <td>
-                                            <a class="" href="">Red Velvet - ACRYLIC STAND KEY RING - Feel My
-                                                Rhythm</a>
-                                        </td>
-                                        <td class="row-title">4</td>
-                                        <td class="row-title">14 Feb 2023</td>
-                                        <td class="row-title">Rp. 1.258.000</td>
-                                        <td>
-                                            <span class="badge badge-danger">Cancelled</span>
-                                        </td>
-                                    </tr>
+                                    @foreach ($orders as $order)
+                                        <tr>
+                                            <td>
+                                                {{ $order->id }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.orders.edit', $order->id) }}">
+                                                    @foreach ($order->orderItems as $item)
+                                                        {{ $item->product->name }}
+                                                        @if (!$loop->last)
+                                                            ,
+                                                        @endif
+                                                    @endforeach
+                                                </a>
+                                            </td>
+                                            <td class="row-title">
+                                                {{ $order->created_at->format('d-m-Y H:i') }}
+                                            </td>
+                                            <td class="row-title">
+                                                Rp. {{ number_format($order->total_amount, 0, '.', '.') }}
+                                            </td>
+                                            <td>
+                                                @if ($order->orderStatus->id == 1)
+                                                    <span class="badge badge-confirmed">
+                                                    @elseif ($order->orderStatus->id == 2)
+                                                        <span class="badge badge-paid">
+                                                        @elseif ($order->orderStatus->id == 3)
+                                                            <span class="badge badge-warning">
+                                                            @elseif ($order->orderStatus->id == 4)
+                                                                <span class="badge badge-primary">
+                                                                @elseif ($order->orderStatus->id == 5)
+                                                                    <span class="badge badge-success">
+                                                                    @elseif ($order->orderStatus->id == 6)
+                                                                        <span class="badge badge-danger">
+                                                @endif
+                                                {{ $order->orderStatus->name }}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -176,101 +186,46 @@
                 <div class="col-newcust">
                     <div class="card cust-card card-table-border-none card-default">
                         <div class="card-header">
-                            <h2>New Customers</h2>
+                            <h2>Recent Customers</h2>
                         </div>
                         <div class="card-body">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="new-cust-img">
-                                                    <a href=""><img class="profile-img"
-                                                            src="../assets/detprod/manyun.jpg" alt="customer image" /></a>
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td>
+                                                <div class="media">
+                                                    <div class="new-cust-img">
+                                                        <a>
+                                                            @if ($user->profile_picture)
+                                                                <img class="profile-img"
+                                                                    src="{{ asset('storage/' . $user->profile_picture) }}" />
+                                                            @else
+                                                                <img class="profile-img"
+                                                                    src="https://dummyimage.com/765x765/eab8c1/ffffff.jpg&text=Insert+Image+Here+(1:1+Ratio)" />
+                                                            @endif
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a>
+                                                            <h6 class="title-marg-bot">
+                                                                {{ $user->name }}
+                                                            </h6>
+                                                        </a>
+                                                        <small>
+                                                            {{ $user->orders->count() }}
+                                                            Order(s)
+                                                        </small>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body">
-                                                    <a href="">
-                                                        <h6 class="title-marg-bot">Moti Lima</h6>
-                                                    </a>
-                                                    <small>@moti.5</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>2 Orders</td>
-                                        <td class="text-display">Rp. 380.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="new-cust-img">
-                                                    <a href=""><img class="profile-img"
-                                                            src="../assets/detprod/manyun.jpg" alt="customer image" /></a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <a href="">
-                                                        <h6 class="title-marg-bot">Moti Empat</h6>
-                                                    </a>
-                                                    <small>@moti4</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>5 Orders</td>
-                                        <td class="text-display">Rp. 3.400.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="new-cust-img">
-                                                    <a href=""><img class="profile-img"
-                                                            src="../assets/detprod/manyun.jpg" alt="customer image" /></a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <a href="">
-                                                        <h6 class="title-marg-bot">Moti Tiga</h6>
-                                                    </a>
-                                                    <small>@moti.tiga</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>1 Order</td>
-                                        <td class="text-display">Rp. 130.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="new-cust-img">
-                                                    <a href=""><img class="profile-img"
-                                                            src="../assets/detprod/manyun.jpg" alt="customer image" /></a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <a href="">
-                                                        <h6 class="title-marg-bot">Moti Dua</h6>
-                                                    </a>
-                                                    <small>@motimoti</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>2 Orders</td>
-                                        <td class="text-display">Rp. 470.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="new-cust-img">
-                                                    <a href=""><img class="profile-img"
-                                                            src="../assets/detprod/manyun.jpg" alt="customer image" /></a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <a href="">
-                                                        <h6 class="title-marg-bot">Moti</h6>
-                                                    </a>
-                                                    <small>@moti</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>1 Order</td>
-                                        <td class="text-display">Rp. 650.000</td>
-                                    </tr>
+                                            </td>
+
+                                            <td class="text-display">
+
+                                                Rp. {{ number_format($user->orders->sum('total_amount'), 0, ',', '.') }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -283,68 +238,43 @@
                             <h2>Top Products</h2>
                         </div>
                         <div class="card-body">
-                            <div class="row media disp-card-body">
-                                <div class="top-prod-img card-body-col card-body-col-mob media-image rounded">
-                                    <a href=""><img src="/assets/detprod/wenpod.jpg" alt="customer image" /></a>
+                            @foreach ($products as $product)
+                                <div class="row media disp-card-body">
+                                    <div class="top-prod-img card-body-col card-body-col-mob media-image rounded">
+                                        <a
+                                            href="
+                                            {{ route('admin.products.edit', $product->id) }}"><img
+                                                src="{{ asset('storage/' . $product->images[1]) }}"
+                                                alt="customer image" /></a>
+                                    </div>
+                                    <div class="col-product-title col-product-title-mob media-body pos">
+                                        <a
+                                            href="
+                                        {{ route('admin.products.edit', $product->id) }}
+                                        ">
+                                            <h6 class="title-marg-bot">
+                                                {{ $product->name }}
+                                            </h6>
+                                        </a>
+                                        <p class="sale"><span class="">
+                                                {{ $product->orderItems->sum('quantity') }}
+                                            </span>Sales</p>
+                                        <p class="text-display">
+                                            {{ Str::limit($product->description, 50, '...') }}
+                                        </p>
+                                        <p class="price">
+                                            @if ($product->discounted_price)
+                                                <span class="">Rp.
+                                                    {{ number_format($product->discounted_price, 0, ',', '.') }}</span>
+                                                <del>Rp. {{ number_format($product->price, 0, ',', '.') }}</del>
+                                            @else
+                                                <span class="">Rp.
+                                                    {{ number_format($product->price, 0, ',', '.') }}</span>
+                                            @endif
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="col-product-title col-product-title-mob media-body pos">
-                                    <a href="">
-                                        <h6 class="title-marg-bot">
-                                            Wendy - 8th Anniversary - Lucky Card Set
-                                        </h6>
-                                    </a>
-                                    <p class="sale"><span class="">1000</span>Sales</p>
-                                    <p class="text-display">
-                                        A commemorative collection of Wendy's unique cards to
-                                        celebrate Red Velvet's 8th anniversary.
-                                    </p>
-                                    <p class="price">
-                                        <span class="">Rp. 350.000</span>
-                                        <del>Rp. 500.000</del>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row media disp-card-body">
-                                <div class="top-prod-img card-body-col card-body-col-mob media-image rounded">
-                                    <a href=""><img src="/assets/detprod/irenprod.jpg" alt="customer image" /></a>
-                                </div>
-                                <div class="col-product-title col-product-title-mob media-body pos">
-                                    <a href="">
-                                        <h6 class="title-marg-bot">
-                                            Irene - 8th Anniversary - Lucky Card Set
-                                        </h6>
-                                    </a>
-                                    <p class="sale"><span class="">29</span>Sales</p>
-                                    <p class="text-display">
-                                        Irene's card is part of Red Velvet's 8th anniversary
-                                        "Lucky Card Set".
-                                    </p>
-                                    <p class="price">
-                                        <span class="">Rp. 600.000</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row media disp-card-body">
-                                <div class="top-prod-img card-body-col card-body-col-mob media-image rounded">
-                                    <a href=""><img src="/assets/detprod/seulprod.jpg" alt="customer image" /></a>
-                                </div>
-                                <div class="col-product-title col-product-title-mob media-body pos">
-                                    <a href="">
-                                        <h6 class="title-marg-bot">
-                                            Seulgi - 8th Anniversary - Lucky Card Set
-                                        </h6>
-                                    </a>
-                                    <p class="sale"><span class="">21</span>Sales</p>
-                                    <p class="text-display">
-                                        Seulgi's card in Red Velvet's 8th anniversary set
-                                        celebrates the group's milestone.
-                                    </p>
-                                    <p class="price">
-                                        <span class="">Rp. 280.000</span>
-                                        <del>Rp. 254.000</del>
-                                    </p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

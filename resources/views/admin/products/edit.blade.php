@@ -70,9 +70,10 @@
                                                         @for ($i = 1; $i < 7; $i++)
                                                             <div class="thumb-upload">
                                                                 <div class="thumb-edit">
-                                                                    <input type="file" name="edit_images[]"
+                                                                    <input type="file" name="images[]"
                                                                         class="form-control mt-2 thumbnailimage-upload"
-                                                                        onchange="previewImage(event, {{ $i }})">
+                                                                        onchange="previewImage(event, {{ $i }})"
+                                                                        {{ $i <= 4 ? 'required' : '' }}>
                                                                     <label for="imageUpload"><img src="/assets/svg/edit.svg"
                                                                             class="svg_img header_svg"
                                                                             alt="edit" /></label>

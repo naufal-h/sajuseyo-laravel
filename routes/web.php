@@ -47,13 +47,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 // Admin routes
 Route::middleware(['admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    Route::get('/admin', function () {
-        return redirect('/admin/dashboard');
-    })->name('admin.dashboard');
 
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 
