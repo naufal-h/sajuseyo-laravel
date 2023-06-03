@@ -1,370 +1,418 @@
 .split-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .left-side {
-  flex: 1;
-  text-align: left;
+    flex: 1;
+    text-align: left;
 }
 
 .right-side {
-  flex: 1;
+    flex: 1;
 }
 
 .flex-box {
-  display: flex;
+    display: flex;
 }
 
 .left {
-  width: 50%;
+    width: 50%;
 }
 
 .right {
-  width: 50%;
+    width: 50%;
 }
 
 .big-img {
-  width: 250px;
+    width: 250px;
 }
 
 .images {
-  display: flex;
-  justify-content: space-between;
-  width: 65%;
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
 }
 
 .small-img {
-  width: 50px;
-  margin: auto;
-  padding: 17px;
-  padding-top: 35px;
-  padding-bottom: 31px;
+    width: 50px;
+    margin: auto;
+    padding: 17px;
+    padding-top: 35px;
+    padding-bottom: 31px;
 }
 
 .small-img {
-  width: inherit;
-  cursor: pointer;
+    width: inherit;
+    cursor: pointer;
 }
 .small-img:hover img {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .first-small {
-  width: 50px;
-  margin: auto;
-  padding-left: 3px;
-  padding-right: 17px;
-  padding-top: 35px;
-  padding-bottom: 31px;
+    width: 50px;
+    margin: auto;
+    padding-left: 3px;
+    padding-right: 17px;
+    padding-top: 35px;
+    padding-bottom: 31px;
 }
 
 .first-small {
-  width: inherit;
-  cursor: pointer;
+    width: inherit;
+    cursor: pointer;
 }
 .first-small:hover img {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .juduldetail {
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
 }
 
 .juduldetail {
-  font-weight: 700;
-  color: #eab8c0;
-  padding-top: 10px;
-  padding-bottom: 16px;
-  padding-left: 9px;
+    font-weight: 700;
+    color: #eab8c0;
+    padding-top: 10px;
+    padding-bottom: 16px;
+    padding-left: 9px;
 }
 
 hr {
-  border: 0;
-  clear: both;
-  display: block;
-  width: 520px;
-  background-color: #eab8c0;
-  height: 2px;
+    border: 0;
+    clear: both;
+    display: block;
+    width: 520px;
+    background-color: #eab8c0;
+    height: 2px;
 }
 
 .ket {
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  padding-top: 26px;
-  max-width: 520px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    padding-top: 26px;
+    max-width: 520px;
 }
 
 .checkout {
-  padding: 0;
-  margin: 0 auto;
+    padding: 0;
+    margin: 0 auto;
 }
 .checkout:after {
-  content: "";
-  display: block;
-  clear: both;
+    content: "";
+    display: block;
+    clear: both;
 }
 .checkout-top {
-  position: relative;
-  margin-top: 15px;
-  line-height: 24px;
-  padding-left: 5px;
+    position: relative;
+    margin-top: 15px;
+    line-height: 24px;
+    padding-left: 5px;
 }
 .checkout-top h2 {
-  display: inline;
-  font-size: 20px;
-  color: #2d2f44;
-  font-weight: 500;
+    display: inline;
+    font-size: 20px;
+    color: #2d2f44;
+    font-weight: 500;
 }
 .checkout-top h2 em {
-  font-style: normal;
-  color: #9a9caa;
-  font-size: 16px;
-  display: block;
-  padding-bottom: 5px;
-  font-weight: 400;
+    font-style: normal;
+    color: #9a9caa;
+    font-size: 16px;
+    display: block;
+    padding-bottom: 5px;
+    font-weight: 400;
 }
 .price-now {
-  margin-top: 10px;
-  position: relative;
-  font-size: 20px;
-  color: #1c2331;
-  line-height: 30px;
-  font-weight: 500;
+    margin-top: 10px;
+    position: relative;
+    font-size: 20px;
+    color: #1c2331;
+    line-height: 30px;
+    font-weight: 500;
 }
 .price-before {
-  text-decoration: line-through;
-  font-size: 16px;
-  color: #9a9caa;
-  font-weight: 400;
-  padding-left: 10px;
+    text-decoration: line-through;
+    font-size: 16px;
+    color: #9a9caa;
+    font-weight: 400;
+    padding-left: 10px;
 }
 .discount {
-  font-size: 16px;
-  color: #ff8254;
-  line-height: 30px;
-  font-weight: 600;
-  padding-left: 10px;
+    font-size: 16px;
+    color: #ff8254;
+    line-height: 30px;
+    font-weight: 600;
+    padding-left: 10px;
 }
 .share {
-  position: absolute;
-  top: 0px;
-  right: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .qna {
-  font-size: 14px;
-  color: #232744;
-  font-weight: 300;
+    font-size: 14px;
+    color: #232744;
+    font-weight: 300;
 }
 
 .qna:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .checkout-table {
-  float: right;
-  width: 400px;
-  margin: 0 0 0 48px;
-  position: relative;
+    float: right;
+    width: 400px;
+    margin: 0 0 0 48px;
+    position: relative;
 }
 .checkout-table table {
-  border: 0;
-  width: 400px;
-  font-size: 14px;
+    border: 0;
+    width: 400px;
+    font-size: 14px;
 }
 .checkout-table th {
-  font-weight: 400;
-  color: #9596a0 !important;
-  width: 120px;
-  padding: 5px 0;
-  padding-bottom: 10px;
-  text-align: left;
-  vertical-align: middle;
+    font-weight: 400;
+    color: #9596a0 !important;
+    width: 120px;
+    padding: 5px 0;
+    padding-bottom: 10px;
+    text-align: left;
+    vertical-align: middle;
 }
 .checkout-table th span {
-  color: #9596a0 !important;
+    color: #9596a0 !important;
 }
 
 .checkout-table img {
-  cursor: pointer;
+    cursor: pointer;
 }
 .checkout-table td {
-  padding: 0 6px 0 6px;
-  vertical-align: middle;
-  color: #1c2331 !important;
+    padding: 0 6px 0 6px;
+    vertical-align: middle;
+    color: #1c2331 !important;
 }
 .checkout-table img {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 .imp-info {
-  position: relative;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  margin-left: -121px;
-  display: block;
-  border-top: 1px solid #d4d5d9;
-  border-bottom: 1px solid #d4d5d9;
+    position: relative;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    margin-left: -121px;
+    display: block;
+    border-top: 1px solid #d4d5d9;
+    border-bottom: 1px solid #d4d5d9;
 }
 .category {
-  padding-left: 0 !important;
-  position: relative;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 10px;
-  margin-left: -121px;
-  display: block;
+    padding-left: 0 !important;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    margin-left: -121px;
+    display: block;
 }
 .imp-info span {
-  color: #ff8254 !important;
+    color: #ff8254 !important;
 }
 .sale {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 .period {
-  display: block;
-  margin: 7px 0 0;
-  font-size: 11px;
-  color: #1c2331;
+    display: block;
+    margin: 7px 0 0;
+    font-size: 11px;
+    color: #1c2331;
 }
 .checkout-bottom {
-  padding: 20px 0 10px;
+    padding: 20px 0 10px;
 }
 .totalPrice {
-  margin: 10px 0 0;
-  height: 34px;
-  line-height: 34px;
-  padding: 0 9px 0;
-  color: #2d2f43;
-  vertical-align: middle;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    margin: 10px 0 0;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 9px 0;
+    color: #2d2f43;
+    vertical-align: middle;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .totalPrice strong {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .totalPrice .total {
-  color: #2d2f43;
-  font-size: 12px;
+    color: #2d2f43;
+    font-size: 12px;
 }
 
 .totalPrice .total em {
-  font-style: normal;
-  font-size: 23px;
+    font-style: normal;
+    font-size: 23px;
 }
 
 .minusBtn,
 .plusBtn {
-  background-color: #fafafa;
-  border: none;
-  cursor: pointer;
+    background-color: #fafafa;
+    border: none;
+    cursor: pointer;
 }
 
 .minusBtn img,
 .plusBtn img {
-  padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .qty {
-  margin: 0 10px;
-  font-size: 18px;
+    margin: 0 10px;
+    font-size: 18px;
 }
 
 .base-button a {
-  font-size: 14px;
-  color: #2d2f44;
-  width: 190px;
-  height: 44px;
-  line-height: 44px;
-  text-align: center;
-  border-radius: 50px;
-  border: 1px solid #b4b5c2;
-  display: inline-block;
+    font-size: 14px;
+    color: #2d2f44;
+    width: 190px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    border-radius: 50px;
+    border: 1px solid #b4b5c2;
+    display: inline-block;
 }
 .base-button a.first {
-  width: 400px;
-  background-color: #eab8c0;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  border: 1px solid #eab8c0;
-  margin-bottom: 8px;
+    width: 400px;
+    background-color: #eab8c0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #eab8c0;
+    margin-bottom: 8px;
 }
 .base-button a:hover {
-  border: 1px solid #eab8c0;
+    border: 1px solid #eab8c0;
 }
 .base-button a.first:hover {
-  background-color: #d9aeb5;
+    background-color: #d9aeb5;
+}
+
+.base-button button {
+    font-size: 14px;
+    color: #2d2f44;
+    width: 190px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid #b4b5c2;
+    display: inline-block;
+    background-color: #fafafa;
+}
+
+.base-button button.wl {
+    font-size: 14px;
+    color: #2d2f44;
+    width: 190px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid #eab8c0;
+    display: inline-block;
+    background-color: #fafafa;
+}
+
+.base-button button.wl:hover {
+    border: 2px solid #b4b5c2;
+    cursor: pointer;
+}
+.base-button button.first {
+    width: 400px;
+    background-color: #eab8c0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #eab8c0;
+    margin-bottom: 8px;
+}
+
+.base-button button:hover {
+    border: 2px solid #eab8c0;
+    cursor: pointer;
+}
+.base-button button.first:hover {
+    background-color: #d9aeb5;
 }
 
 .fleft {
-  float: left;
+    float: left;
 }
 .fright {
-  float: right;
+    float: right;
 }
 
 .category-buttons {
-  display: inline-block;
-  margin: 0 4px;
-  padding: 5px 10px;
-  border: 1px solid #d4d5d9;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  color: #1c2331;
-  text-decoration: none;
-  background-color: #ffffff;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+    display: inline-block;
+    margin: 0 4px;
+    padding: 5px 10px;
+    border: 1px solid #d4d5d9;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #1c2331;
+    text-decoration: none;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 .category-buttons.first {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .category-buttons:disabled {
-  cursor: no-drop;
-  color: #d4d5d9;
+    cursor: no-drop;
+    color: #d4d5d9;
 }
 
 .category-buttons:disabled:hover {
-  color: #d4d5d9;
-  background-color: #ffffff;
-  border: 1px solid #d4d5d9;
+    color: #d4d5d9;
+    background-color: #ffffff;
+    border: 1px solid #d4d5d9;
 }
 
 .category-buttons:hover {
-  background-color: #eab8c0;
-  color: #fff;
-  border: 1px solid #eab8c0;
+    background-color: #eab8c0;
+    color: #fff;
+    border: 1px solid #eab8c0;
 }
 .category-buttons.selected {
-  background-color: #eab8c0;
-  color: #fff;
-  border: 1px solid #eab8c0;
+    background-color: #eab8c0;
+    color: #fff;
+    border: 1px solid #eab8c0;
 }
 
 @media (max-width: 990px) {
-  .split-container {
-    flex-direction: column;
-    height: auto;
-  }
+    .split-container {
+        flex-direction: column;
+        height: auto;
+    }
 
-  .left-side,
-  .right-side {
-    flex: none;
-    width: 100%;
-  }
+    .left-side,
+    .right-side {
+        flex: none;
+        width: 100%;
+    }
 
-  .checkout-table {
-    margin-left: 0;
-    float: left;
-  }
+    .checkout-table {
+        margin-left: 0;
+        float: left;
+    }
 }

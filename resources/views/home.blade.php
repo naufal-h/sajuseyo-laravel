@@ -33,7 +33,7 @@
                                         @if (auth()->user()->wishlist()->first()->wishlistItems()->where('product_id', $product->id)->exists())
                                             <form
                                                 action="{{ route('wishlist.remove',auth()->user()->wishlist()->first()->wishlistItems()->where('product_id', $product->id)->first()) }}"
-                                                method="GET">
+                                                method="POST">
                                                 @csrf
                                                 <button class="btninv">
                                                     <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -44,7 +44,7 @@
                                                 </button>
                                             @else
                                                 <form action="{{ route('wishlist.add', ['productId' => $product->id]) }}"
-                                                    method="GET">
+                                                    method="POST">
                                                     @csrf
                                                     <button class="btn">
                                                         <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -57,7 +57,7 @@
                                         @endif
                                     @else
                                         <form action="{{ route('wishlist.add', ['productId' => $product->id]) }}"
-                                            method="GET">
+                                            method="POST">
                                             @csrf
                                             <button class="btn">
                                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -69,7 +69,7 @@
                                         </form>
                                     @endif
                                 @else
-                                    <form action="{{ route('wishlist.add', ['productId' => $product->id]) }}" method="GET">
+                                    <form action="{{ route('wishlist.add', ['productId' => $product->id]) }}" method="POST">
                                         @csrf
                                         <button class="btn">
                                             <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -82,7 +82,7 @@
                                 @endauth
                             </div>
                             <div>
-                                <a href="{{ route('home', $product->id) }}">
+                                <a href="{{ route('product-details.show', $product->id) }}">
                                     @if (!empty($product->images))
                                         <img src="{{ asset('storage/' . $product->images[0]) }}">
                                     @else

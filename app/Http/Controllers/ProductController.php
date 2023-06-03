@@ -156,4 +156,9 @@ class ProductController extends Controller
 
         return view('products.agency', compact('agency', 'products'));
     }
+
+    public function showProducts(Product $product)
+    {
+        return view('products.product-details', compact('product'));
+    }
 }

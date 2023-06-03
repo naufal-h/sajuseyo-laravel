@@ -27,8 +27,12 @@ Route::get('/home', function () {
     return redirect('/');
 });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Product routes
 Route::get('/category/{categoryId}', [ProductController::class, 'showProductsByCategory'])->name('products.category');
 Route::get('/agency/{agencyId}', [ProductController::class, 'showProductsByAgency'])->name('products.agency');
+Route::get('/product-details/{product}', [ProductController::class, 'showProducts'])->name('product-details.show');
+Route::post('/product-details/add/{productId}', [CartController::class, 'addFromDetail'])->name('detail.cart.add');
 
 
 // Login routes
@@ -69,9 +73,7 @@ Route::middleware(['admin'])->group(function () {
 
 // Cart routes
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
-Route::get('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::patch('/cart/increase/{cartItemId}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
 Route::patch('/cart/decrease/{cartItemId}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
@@ -79,9 +81,7 @@ Route::patch('/cart/update/{cartItemId}', [CartController::class, 'updateQuantit
 
 // Wishlist routes
 Route::get('/wishlist', [WishlistController::class, 'showWishlist'])->name('wishlist.show');
-Route::get('/wishlist/add/{productId}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 Route::post('/wishlist/add/{productId}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-Route::get('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 Route::post('/wishlist/remove/{wishlistItemId}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
 // Help routes
