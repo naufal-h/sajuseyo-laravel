@@ -107,10 +107,13 @@
                     </div>
                     <div class="checkout-bottom">
                         <div class="base-button" style="position: relative">
-
-                            <button type="submit" class="first" style="display: block">
-                                <span>Buy Now</span>
-                            </button>
+                            <form action="{{ route('checkout.buy_now', ['productId' => $product->id]) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="quantity" id="quantityInput" value="{{ $totalQuantity }}">
+                                <button type="submit" class="first" style="display: block">
+                                    <span>Buy Now</span>
+                                </button>
+                            </form>
 
                             <form action="{{ route('detail.cart.add', ['productId' => $product->id]) }}" method="POST">
                                 @csrf

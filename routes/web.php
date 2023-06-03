@@ -103,7 +103,9 @@ Route::get('/cities/{provinceId}', [AddressController::class, 'getCitiesByProvin
 
 // Checkout routes
 Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/{productId}', [OrderController::class, 'buyNow'])->name('checkout.buy_now');
 Route::post('/placeOrder', [OrderController::class, 'placeOrder'])->name('checkout.place_order');
+Route::post('/placeOrder/{productId}', [OrderController::class, 'placeOrderNow'])->name('checkout.place_order_now');
 
 // User routes
 Route::get('/user/profile', [UserController::class, 'showProfile'])->name('profile');
