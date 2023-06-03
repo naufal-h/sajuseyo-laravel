@@ -176,6 +176,8 @@
         </div>
         <form action="{{ route('checkout.place_order_now', ['productId' => $product->id]) }}" method="POST">
             @csrf
+            <input type="hidden" name="courier" value="{{ $courier }}">
+            <input type="hidden" name="shippingCost" value="{{ $shippingCost }}">
             <input type="hidden" name="quantity" value="{{ $quantity }}">
             <div class="checkout-bottom">
                 <div class="checkout-bottom-gap"></div>

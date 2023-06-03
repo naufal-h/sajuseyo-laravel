@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('address_city');
             $table->string('address_province');
             $table->string('address_postal_code');
+            $table->string('courier');
+            $table->integer('shipping_cost');
             $table->integer('total_amount');
             $table->timestamps();
 

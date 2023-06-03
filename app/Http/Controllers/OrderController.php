@@ -73,6 +73,8 @@ class OrderController extends Controller
 
     public function placeOrderNow(Request $request, $productId)
     {
+        $courier = $request->input('courier');
+        $shippingCost = $request->input('shippingCost');
         $quantity = $request->input('quantity');
         $rajaOngkir = new Client();
         $apiKey = '50fccf12764162cd152d016aae5460e1';
@@ -118,6 +120,8 @@ class OrderController extends Controller
             'address_province' => $address->province,
             'address_postal_code' => $address->postal_code,
             'order_status_id' => 2,
+            'shipping_cost' => $shippingCost,
+            'courier' => $courier,
         ]);
 
         $order->orderStatusHistories()->create([
@@ -199,6 +203,8 @@ class OrderController extends Controller
 
     public function placeOrder(Request $request)
     {
+        $shippingCost = $request->input('shippingCost');
+        $courier = $request->input('courier');
         $rajaOngkir = new Client();
         $apiKey = '50fccf12764162cd152d016aae5460e1';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
@@ -248,6 +254,8 @@ class OrderController extends Controller
             'address_province' => $address->province,
             'address_postal_code' => $address->postal_code,
             'order_status_id' => 2,
+            'shipping_cost' => $shippingCost,
+            'courier' => $courier,
         ]);
 
         $order->orderStatusHistories()->create([

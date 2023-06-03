@@ -11,7 +11,7 @@
                 <div>
                     <h1>Edit Product</h1>
                     <p class="breadcrumbs">
-                        <span><a href="index.html">Home</a></span>
+                        <span><a href="{{ route('admin.products.index') }}">Products</a></span>
                         <span><img src="/assets/svg/arrow-down.svg" style="transform: rotate(-90deg)"
                                 alt="" /></span>Edit Product
                     </p>

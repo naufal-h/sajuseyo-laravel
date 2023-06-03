@@ -19,6 +19,8 @@ class Order extends Model
         'address_province',
         'address_postal_code',
         'total_amount',
+        'shipping_cost',
+        'courier',
     ];
 
     public function orderItems()

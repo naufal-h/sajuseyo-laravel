@@ -29,7 +29,7 @@
                         customer service and connect fans nationwide. Thank you for
                         choosing Sajuseyo!, your one-stop K-POP shop.
                     </p>
-                    <a href="/home.html" class="button button-space about-button">Start Shopping Now!</a>
+                    <a href="{{ route('home') }}" class="button button-space about-button">Start Shopping Now!</a>
                 </div>
                 <div class="image-block">
                     <img src="/assets/svg/agency.svg" alt="" />

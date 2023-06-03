@@ -37,9 +37,11 @@
                                 <div>
                                     <div class="order-detail-info">
                                         <div class="order-detail-info-pred">
-                                            Your order should be delivered to you by
+                                            Your order should arrive by
                                             <div class="order-detail-info-date" tabindex="0">
-                                                <div><u>30-03-2023</u></div>
+                                                <div><u>
+                                                        {{ $order->created_at->addDays(14)->format('d M Y') }}
+                                                    </u></div>
                                             </div>
                                             .
                                         </div>
@@ -219,8 +221,9 @@
                                             <div class="data-delivery-courier-wrap">
                                                 <div class="data-delivery-courier">
                                                     <div>
-                                                        <div>Pengiriman Cepat - Gratis Ongkir</div>
-                                                        <div>082111633083</div>
+                                                        <div>
+                                                            {{ $order->courier == 'jne' ? 'JNE' : ($order->courier == 'pos' ? 'Pos Indonesia' : 'TIKI') }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,7 +247,8 @@
                                                 <div class="order-detail-product-gap"></div>
                                                 <div class="order-detail-product">
                                                     <div>
-                                                        <a class="order-detail-product-item" href="detprod.html">
+                                                        <a class="order-detail-product-item"
+                                                            href="{{ route('product-details.show', $orderItem->product->id) }}">
                                                             <div class="product-item-detail-wrap">
                                                                 <div class="product-item-detail">
                                                                     <div class="product-item-detail-img">
@@ -288,7 +292,9 @@
                                                 <span>Subtotal</span>
                                             </div>
                                             <div class="item-detail-amount">
-                                                <div>Rp. 1.050.000</div>
+                                                <div>
+                                                    Rp. {{ number_format($order->total_amount, 0, '.', '.') }}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="item-detail-row">
@@ -296,7 +302,9 @@
                                                 <span>Shipping Fee</span>
                                             </div>
                                             <div class="item-detail-amount">
-                                                <div>Rp. 0</div>
+                                                <div>
+                                                    Rp. {{ number_format($order->shipping_cost, 0, '.', '.') }}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="item-detail-row item-detail-total-wrap">
@@ -305,7 +313,8 @@
                                             </div>
                                             <div class="item-detail-amount">
                                                 <div class="item-detail-amount-total">
-                                                    Rp. {{ number_format($order->total_amount, 0, '.', '.') }}
+                                                    Rp.
+                                                    {{ number_format($order->total_amount + $order->shipping_cost, 0, '.', '.') }}
                                                 </div>
                                             </div>
                                         </div>

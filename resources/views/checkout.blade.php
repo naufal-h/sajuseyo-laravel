@@ -167,6 +167,8 @@
         </div>
         <form action="{{ route('checkout.place_order') }}" method="POST">
             @csrf
+            <input type="hidden" name="courier" value="{{ $courier }}">
+            <input type="hidden" name="shippingCost" value="{{ $shippingCost }}">
 
             <div class="checkout-bottom">
                 <div class="checkout-bottom-gap"></div>

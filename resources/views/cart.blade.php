@@ -27,14 +27,14 @@
                         </div>
                         <div class="cart-detail">
                             <div class="detail-layout">
-                                <a href="/detprod.html">
+                                <a href="{{ route('product-details.show', $cartItem->product->id) }}">
                                     <div class="cart-detail-img"
                                         style="background-image: url({{ 'storage/' . $cartItem->product->images[0] }})">
                                     </div>
                                 </a>
                                 <div class="cart-detail-title">
                                     <a class="cart-detail-text" title="RED VELVET - 8TH ANNIVERSARY - LUCKY CARD SET"
-                                        href="/detprod.html">{{ $cartItem->product->name }}</a>
+                                        href="{{ route('product-details.show', $cartItem->product->id) }}">{{ $cartItem->product->name }}</a>
 
                                     <span class="varian">{{ $cartItem->product->agency->name }}</span>
 
@@ -68,7 +68,8 @@
                         </div>
                         <div class="cart-qty">
                             <div class="qty-component">
-                                <form action="{{ route('cart.decrease', ['cartItemId' => $cartItem->id]) }}" method="POST">
+                                <form action="{{ route('cart.decrease', ['cartItemId' => $cartItem->id]) }}"
+                                    method="POST">
                                     @csrf
                                     @method('PATCH')
                                     <button class="qty-btn">

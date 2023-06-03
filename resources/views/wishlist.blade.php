@@ -53,7 +53,7 @@
                     <div class="description">
                         <div class="over_box">
                             <div class="product-name">
-                                <a href="detprod.html">
+                                <a href="{{ route('product-details.show', $wishlistItem->product->id) }}">
                                     <em>{{ $wishlistItem->product->name }}</em>{{ $wishlistItem->product->name }}
                                 </a>
                             </div>

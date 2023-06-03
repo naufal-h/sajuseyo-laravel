@@ -47,7 +47,11 @@
                     <li>
                         <strong>Wishlist</strong>
                         <a href="{{ route('wishlist.show') }}" class="count">
-                            <span>{{ auth()->user()->wishlist()->withCount('wishlistItems')->first()->wishlist_items_count }}</span>
+                            @if (auth()->user()->wishlist()->withCount('wishlistItems')->first())
+                                <span>{{ auth()->user()->wishlist()->withCount('wishlistItems')->first()->wishlist_items_count }}</span>
+                            @else
+                                <span>0</span>
+                            @endif
                         </a>
                     </li>
                 </ul>

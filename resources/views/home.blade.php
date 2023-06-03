@@ -95,7 +95,7 @@
                         <div class="description">
                             <div class="over_box">
                                 <div class="product-name">
-                                    <a href="detprod.html">
+                                    <a href="{{ route('product-details.show', $product->id) }}">
                                         <em>{{ $product->agency->name }}</em>{{ $product->name }}
                                     </a>
                                 </div>

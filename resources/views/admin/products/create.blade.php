@@ -11,7 +11,7 @@
                 <div>
                     <h1>Add Product</h1>
                     <p class="breadcrumbs">
-                        <span><a href="index.html">Home</a></span>
+                        <span><a href="{{ route('admin.products.index') }}">Products</a></span>
                         <span><img src="/assets/svg/arrow-down.svg" style="transform: rotate(-90deg)"
                                 alt="" /></span>Add Product
                     </p>
@@ -62,7 +62,8 @@
                                                                 <div class="thumb-edit">
                                                                     <input type="file" name="images[]"
                                                                         class="form-control mt-2 thumbnailimage-upload"
-                                                                        onchange="previewImage(event, {{ $i }})">
+                                                                        onchange="previewImage(event, {{ $i }})"
+                                                                        {{ $i <= 4 ? 'required' : '' }}>
                                                                     <label for="imageUpload"><img src="/assets/svg/edit.svg"
                                                                             class="svg_img header_svg"
                                                                             alt="edit" /></label>
