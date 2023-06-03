@@ -18,6 +18,10 @@ class OrderController extends Controller
 
     public function buyNow(Request $request, $productId)
     {
+        $courier = $request->input('courier');
+        if (!$courier) {
+            $courier = 'jne';
+        }
         $quantity = $request->input('quantity');
         $rajaOngkir = new Client();
         $apiKey = '50fccf12764162cd152d016aae5460e1';
@@ -42,13 +46,29 @@ class OrderController extends Controller
 
         $cityName = json_decode($response->getBody(), true)['rajaongkir']['results']['city_name'];
 
+        $shippingCost = 0;
+        $response = $rajaOngkir->request('POST', $baseUrl . 'cost', [
+            'headers' => [
+                'key' => $apiKey,
+                'content-type' => 'application/x-www-form-urlencoded',
+            ],
+            'form_params' => [
+                'origin' => 151, // ID Tangsel
+                'destination' => $address->city,
+                'weight' => 200, // Gram
+                'courier' => $courier,
+            ],
+        ]);
+
+        $shippingCost = json_decode($response->getBody(), true)['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+
         $address->province = $provinceName;
         $address->city = $cityName;
 
         $product = Product::findOrFail($productId);
 
 
-        return view('products.buy-now', compact('product', 'address', 'quantity'));
+        return view('products.buy-now', compact('product', 'address', 'quantity', 'shippingCost', 'courier'));
     }
 
     public function placeOrderNow(Request $request, $productId)
@@ -120,8 +140,13 @@ class OrderController extends Controller
         return redirect()->route('home')->with('success', 'Order placed successfully.');
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        $courier = $request->input('courier');
+        if (!$courier) {
+            $courier = 'jne';
+        }
+
         $rajaOngkir = new Client();
         $apiKey = '50fccf12764162cd152d016aae5460e1';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
@@ -155,7 +180,7 @@ class OrderController extends Controller
                 'origin' => 151, // ID Tangsel
                 'destination' => $address->city,
                 'weight' => 200, // Gram
-                'courier' => 'jne',
+                'courier' => $courier,
             ],
         ]);
 
@@ -169,7 +194,7 @@ class OrderController extends Controller
         $cartItems = $cart->cartItems;
 
 
-        return view('checkout', compact('cartItems', 'address', 'shippingCost'));
+        return view('checkout', compact('cartItems', 'address', 'shippingCost', 'courier'));
     }
 
     public function placeOrder(Request $request)
