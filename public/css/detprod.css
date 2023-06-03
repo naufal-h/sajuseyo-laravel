@@ -333,6 +333,11 @@ hr {
     border: 2px solid #b4b5c2;
     cursor: pointer;
 }
+
+.base-button button[disabled]:hover {
+    cursor: not-allowed;
+}
+
 .base-button button.first {
     width: 400px;
     background-color: #eab8c0;

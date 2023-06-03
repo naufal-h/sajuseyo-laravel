@@ -77,7 +77,11 @@
                                 <th></th>
                                 <td class="imp-info">
                                     <span style="font-size: 14px; color: #232744">
-                                        *Hurry up! Offer ends soon.
+                                        @if ($product->discounted_price)
+                                            *Hurry up! Offer ends soon.
+                                        @else
+                                            *Hurry up! Limited stock.
+                                        @endif
                                     </span>
                                 </td>
                             </tr>
@@ -107,14 +111,20 @@
                     </div>
                     <div class="checkout-bottom">
                         <div class="base-button" style="position: relative">
-                            <form action="{{ route('checkout.buy_now', ['productId' => $product->id]) }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="quantity" id="quantityInput" value="{{ $totalQuantity }}">
-                                <button type="submit" class="first" style="display: block">
-                                    <span>Buy Now</span>
+                            @if ($product->stock > 0)
+                                <form action="{{ route('checkout.buy_now', ['productId' => $product->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <input type="hidden" name="quantity" id="quantityInput" value="{{ $totalQuantity }}">
+                                    <button type="submit" class="first" style="display: block">
+                                        <span>Buy Now</span>
+                                    </button>
+                                </form>
+                            @else
+                                <button class="first" style="display: block" disabled>
+                                    <span>SOLD OUT</span>
                                 </button>
-                            </form>
-
+                            @endif
                             <form action="{{ route('detail.cart.add', ['productId' => $product->id]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="quantity" id="quantityInput" value="{{ $totalQuantity }}">
