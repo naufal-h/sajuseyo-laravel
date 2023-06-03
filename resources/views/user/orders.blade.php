@@ -13,57 +13,7 @@
                 @include('layouts.userside')
                 <div class="detail-order-main">
                     <div class="detail-order-main-wrap">
-                        <div class="orders-filter">
-                            <a class="orders-filter-label orders-filter-active" href="./list-order.html">
-                                <span class="orders-filter-text">All</span>
-                            </a>
-                            <a class="orders-filter-label" href="./list-order.html">
-                                <span class="orders-filter-text">Paid</span>
-                                @if ($orders->where('order_status_id', '2')->count() > 0)
-                                    <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_status_id', '2')->count() }})
-                                    </span>
-                                @endif
-                            </a>
-                            <a class="orders-filter-label" href="./list-order.html">
-                                <span class="orders-filter-text">Prepared</span>
-                                @if ($orders->where('order_status_id', '3')->count() > 0)
-                                    <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_status_id', '3')->count() }})
-                                    </span>
-                                @endif
-                            </a>
-                            <a class="orders-filter-label" href="./list-order.html">
-                                <span class="orders-filter-text">
-                                    Delivered
-                                </span>
-                                @if ($orders->where('order_status_id', '4')->count() > 0)
-                                    <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_status_id', '4')->count() }})
-                                    </span>
-                                @endif
-                            </a>
-                            <a class="orders-filter-label" href="./list-order.html">
-                                <span class="orders-filter-text">
-                                    Completed
-                                </span>
-                                @if ($orders->where('order_status_id', '5')->count() > 0)
-                                    <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_status_id', '5')->count() }})
-                                    </span>
-                                @endif
-                            </a>
-                            <a class="orders-filter-label" href="./list-order.html">
-                                <span class="orders-filter-text">
-                                    Cancelled
-                                </span>
-                                @if ($orders->where('order_status_id', '6')->count() > 0)
-                                    <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_status_id', '6')->count() }})
-                                    </span>
-                                @endif
-                            </a>
-                        </div>
+                        @include('layouts.orders-filter')
                         <div></div>
                         @foreach ($orders as $order)
                             <div class="detail-order-main-item">

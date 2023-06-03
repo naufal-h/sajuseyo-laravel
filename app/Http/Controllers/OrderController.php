@@ -240,6 +240,15 @@ class OrderController extends Controller
         return view('user.orders', compact('orders'));
     }
 
+    public function showOrdersByStatus($id)
+    {
+        $user = User::find(Auth::id());
+
+        $orders = $user->orders()->where('order_status_id', $id)->get();
+
+        return view('user.orders', compact('orders'));
+    }
+
     public function orderDetails($id)
     {
         $user = User::find(Auth::id());
