@@ -21,8 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $products = Product::withCount('orderItems')->orderBy('order_items_count', 'desc')->limit(5)->get();
 
-        $products = Product::with('category', 'agency')->get();
 
         return view('home', compact('products'));
     }

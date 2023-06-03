@@ -159,6 +159,11 @@ class ProductController extends Controller
 
     public function showProducts(Product $product)
     {
-        return view('products.product-details', compact('product'));
+        $products = Product::where('agency_id', $product->agency_id)
+            ->where('id', '!=', $product->id)
+            ->limit(10)
+            ->get();
+
+        return view('products.product-details', compact('product', 'products'));
     }
 }
