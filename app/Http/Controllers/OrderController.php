@@ -145,6 +145,22 @@ class OrderController extends Controller
 
         $cityName = json_decode($response->getBody(), true)['rajaongkir']['results']['city_name'];
 
+        $shippingCost = 0;
+        $response = $rajaOngkir->request('POST', $baseUrl . 'cost', [
+            'headers' => [
+                'key' => $apiKey,
+                'content-type' => 'application/x-www-form-urlencoded',
+            ],
+            'form_params' => [
+                'origin' => 151, // ID Tangsel
+                'destination' => $address->city,
+                'weight' => 200, // Gram
+                'courier' => 'jne',
+            ],
+        ]);
+
+        $shippingCost = json_decode($response->getBody(), true)['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+
         $address->province = $provinceName;
         $address->city = $cityName;
 
@@ -153,7 +169,7 @@ class OrderController extends Controller
         $cartItems = $cart->cartItems;
 
 
-        return view('checkout', compact('cartItems', 'address'));
+        return view('checkout', compact('cartItems', 'address', 'shippingCost'));
     }
 
     public function placeOrder(Request $request)
