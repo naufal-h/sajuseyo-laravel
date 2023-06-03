@@ -84,23 +84,7 @@
                                     </tbody>
 
                                 </table>
-                                <div class="bottom-information">
-                                    <div class="dataTables_info">
-                                        Showing 1 to 20 of 88 entries
-                                    </div>
-                                    <div class="dataTables_paginate paging_simple_numbers">
-                                        <div class="pagination">
-                                            <a href="#">&laquo;</a>
-                                            <a href="#" class="active">1</a>
-                                            <a href="#">2</a>
-                                            <a href="#">3</a>
-                                            <a href="#">4</a>
-                                            <a href="#">5</a>
-                                            <a href="#">6</a>
-                                            <a href="#">&raquo;</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{ $orders->links('vendor.pagination.default') }}
                             </div>
                         </div>
                     </div>

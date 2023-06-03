@@ -19,7 +19,7 @@ class AdminController extends Controller
 
     public function orders()
     {
-        $orders = Order::all();
+        $orders = Order::Paginate(20);
 
         return view('admin.orders.index', compact('orders'));
     }
@@ -45,7 +45,7 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = User::all();
+        $users = User::Paginate(20);
 
         return view('admin.users', compact('users'));
     }
