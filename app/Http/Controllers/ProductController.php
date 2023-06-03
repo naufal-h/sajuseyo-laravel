@@ -166,4 +166,12 @@ class ProductController extends Controller
 
         return view('products.product-details', compact('product', 'products'));
     }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('q');
+        $products = Product::where('name', 'LIKE', "%$searchTerm%")->get();
+
+        return view('products.search', ['products' => $products, 'searchTerm' => $searchTerm]);
+    }
 }

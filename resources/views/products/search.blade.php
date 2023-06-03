@@ -8,7 +8,7 @@
     <div class="wrapper celeb-container">
         @include('products.sidebar')
         <div class="main-content">
-            @foreach ($products as $product)
+            @forelse ($products as $product)
                 <li class="product-card">
                     <div class="thumbnail">
                         <div class="product-buttons">
@@ -112,7 +112,12 @@
                         </div>
                     </div>
                 </li>
-            @endforeach
+            @empty
+
+                <h1>
+                    No products found
+                </h1>
+            @endforelse
         </div>
     </div>
 @endsection

@@ -16,7 +16,7 @@
                                 @if (
                                     $wishlist &&
                                         $wishlist->wishlistItems()->where('product_id', $wishlistItem->product->id)->exists())
-                                    <form action="{{ route('wishlist.remove', $wishlistItem->id) }}" method="GET">
+                                    <form action="{{ route('wishlist.remove', $wishlistItem->id) }}" method="POST">
                                         @csrf
                                         <button class="btninv">
                                             <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -26,7 +26,7 @@
                                             </svg>
                                         </button>
                                     @else
-                                        <form action="{{ route('wishlist.remove', $wishlistItem->id) }}" method="GET">
+                                        <form action="{{ route('wishlist.remove', $wishlistItem->id) }}" method="POST">
                                             @csrf
                                             <button class="btn">
                                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none"

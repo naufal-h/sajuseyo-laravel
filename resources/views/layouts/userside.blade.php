@@ -9,9 +9,6 @@
         <li>
             <a href="{{ route('wishlist.show') }}">Wish List </a>
         </li>
-        <li>
-            <a href="coupon.html">Coupons </a>
-        </li>
     </ul>
     <ul>
         <li class="first_li">My Profile</li>

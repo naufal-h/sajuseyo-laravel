@@ -19,17 +19,17 @@
                             </a>
                             <a class="orders-filter-label" href="./list-order.html">
                                 <span class="orders-filter-text">Paid</span>
-                                @if ($orders->where('order_statuses_id', '2')->count() > 0)
+                                @if ($orders->where('order_status_id', '2')->count() > 0)
                                     <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_statuses_id', '2')->count() }})
+                                        ({{ $orders->where('order_status_id', '2')->count() }})
                                     </span>
                                 @endif
                             </a>
                             <a class="orders-filter-label" href="./list-order.html">
                                 <span class="orders-filter-text">Prepared</span>
-                                @if ($orders->where('order_statuses_id', '3')->count() > 0)
+                                @if ($orders->where('order_status_id', '3')->count() > 0)
                                     <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_statuses_id', '3')->count() }})
+                                        ({{ $orders->where('order_status_id', '3')->count() }})
                                     </span>
                                 @endif
                             </a>
@@ -37,9 +37,9 @@
                                 <span class="orders-filter-text">
                                     Delivered
                                 </span>
-                                @if ($orders->where('order_statuses_id', '4')->count() > 0)
+                                @if ($orders->where('order_status_id', '4')->count() > 0)
                                     <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_statuses_id', '4')->count() }})
+                                        ({{ $orders->where('order_status_id', '4')->count() }})
                                     </span>
                                 @endif
                             </a>
@@ -47,9 +47,9 @@
                                 <span class="orders-filter-text">
                                     Completed
                                 </span>
-                                @if ($orders->where('order_statuses_id', '5')->count() > 0)
+                                @if ($orders->where('order_status_id', '5')->count() > 0)
                                     <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_statuses_id', '5')->count() }})
+                                        ({{ $orders->where('order_status_id', '5')->count() }})
                                     </span>
                                 @endif
                             </a>
@@ -57,9 +57,9 @@
                                 <span class="orders-filter-text">
                                     Cancelled
                                 </span>
-                                @if ($orders->where('order_statuses_id', '6')->count() > 0)
+                                @if ($orders->where('order_status_id', '6')->count() > 0)
                                     <span class="orders-filter-counter">
-                                        ({{ $orders->where('order_statuses_id', '6')->count() }})
+                                        ({{ $orders->where('order_status_id', '6')->count() }})
                                     </span>
                                 @endif
                             </a>
@@ -94,7 +94,8 @@
                                                     <div class="order-detail-product-gap"></div>
                                                     <div class="order-detail-product">
                                                         <div>
-                                                            <a class="order-detail-product-item" href="detorder.html">
+                                                            <a class="order-detail-product-item"
+                                                                href="{{ route('orders.show', $order->id) }}">
                                                                 <div class="product-item-detail-wrap">
                                                                     <div class="product-item-detail">
                                                                         <div class="product-item-detail-img">
@@ -146,10 +147,11 @@
                                             <div>
                                                 <div class="order-detail-info">
                                                     <div class="order-detail-info-pred"></div>
-
-                                                    <button class="order-received">
-                                                        <a href="home.html" style="color: white">Buy Again</a>
-                                                    </button>
+                                                    <a href="{{ route('orders.show', $order->id) }}">
+                                                        <button class="order-received">
+                                                            <p style="color: white">View Details</p>
+                                                        </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

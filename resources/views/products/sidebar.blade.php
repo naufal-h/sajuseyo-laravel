@@ -59,4 +59,11 @@
         <div class="text-label">Wishlist</div>
         <hr />
     </div>
+@elseif(Request::is('*/search*'))
+    <div class="sidebar">
+        <div class="text-label"><span style="color: #eab8c0">
+                {{ $products->count() }}
+            </span>Result Were Found</div>
+        <hr />
+    </div>
 @endif

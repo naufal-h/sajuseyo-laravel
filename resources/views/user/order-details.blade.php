@@ -48,12 +48,12 @@
                                             <form action="{{ route('orders.complete', $order->id) }}" method="POST">
                                                 @csrf
                                                 <button class="order-received">
-                                                    <a style="color: white">Order Received</a>
+                                                    <a style="color: white">Complete Order</a>
                                                 </button>
                                             </form>
                                         @else
                                             <button class="order-received" disabled>
-                                                <a style="color: white">Order Received</a>
+                                                <a style="color: white">Complete Order</a>
                                             </button>
                                         @endif
 

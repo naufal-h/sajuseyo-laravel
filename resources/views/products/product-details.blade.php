@@ -60,9 +60,6 @@
                             @else
                                 <span class="discount">SOLD OUT</span>
                             @endif
-
-
-
                         </div>
                     </div>
                     <table border="0">
@@ -135,7 +132,6 @@
                                 <button class="fleft" style="display: block">Add to Cart</button>
                             </form>
 
-
                             @auth
                                 @if (auth()->user()->wishlist()->exists())
                                     @if (auth()->user()->wishlist()->first()->wishlistItems()->where('product_id', $product->id)->exists())
@@ -163,18 +159,12 @@
                                     <button class="fright">Add to Wish List</button>
                                 </form>
                             @endauth
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="main_section2">
         <center>

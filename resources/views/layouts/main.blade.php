@@ -33,8 +33,8 @@
                     <nav role="navigation" class="nav-content navibar-menu">
                         <div class="search-banner">
                             <div class="search-section">
-                                <form action="/search.html" class="search nav-form">
-                                    <input type="search" class="search-bar nav-input" maxlength="256"
+                                <form action="{{ route('products.search') }}" method="GET" class="search nav-form">
+                                    <input type="search" name="q" class="search-bar nav-input" maxlength="256"
                                         placeholder="Search here..." id="search" required="" /><input
                                         type="submit" value="Search" class="hidden w-button" />
                                 </form>

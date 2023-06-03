@@ -23,7 +23,6 @@ class HomeController extends Controller
     {
         $products = Product::withCount('orderItems')->orderBy('order_items_count', 'desc')->limit(5)->get();
 
-
         return view('home', compact('products'));
     }
 }
