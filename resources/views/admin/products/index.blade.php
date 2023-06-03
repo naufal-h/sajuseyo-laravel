@@ -28,8 +28,10 @@
                             <div class="dataTables_wrapper">
                                 <div class="top-information">
                                     <div class="dataTables_filter">
-                                        <label>Search &nbsp;<input type="search" class="form-search"
-                                                placeholder="" /></label>
+                                        <form action="{{ route('admin.products.index') }}" method="GET" id="search-form">
+                                            <label>Search &nbsp;<input type="search" name="search" class="form-search"
+                                                    placeholder="" value="{{ request()->query('search') }}" /></label>
+                                        </form>
                                     </div>
                                 </div>
                                 <table class="table dataTable no-footer" style="width: 100%">
@@ -131,4 +133,13 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('#search-form input[name="search"]').addEventListener('keypress', function(event) {
+
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.querySelector('#search-form').submit();
+            }
+        });
+    </script>
 @endsection

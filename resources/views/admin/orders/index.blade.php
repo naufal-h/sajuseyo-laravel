@@ -23,10 +23,7 @@
                         <div class="table-responsive">
                             <div class="dataTables_wrapper">
                                 <div class="top-information">
-                                    <div class="dataTables_filter">
-                                        <label>Search &nbsp;<input type="search" class="form-search"
-                                                placeholder="" /></label>
-                                    </div>
+
                                 </div>
                                 <table class="table dataTable no-footer" style="width: 100%">
                                     <thead>

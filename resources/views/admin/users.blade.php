@@ -25,8 +25,10 @@
                             <div class="dataTables_wrapper">
                                 <div class="top-information">
                                     <div class="dataTables_filter">
-                                        <label>Search &nbsp;<input type="search" class="form-search"
-                                                placeholder="" /></label>
+                                        <form action="{{ route('admin.users') }}" method="GET" id="search-form">
+                                            <label>Search &nbsp;<input type="search" name="search" class="form-search"
+                                                    placeholder="" value="{{ request()->query('search') }}" /></label>
+                                        </form>
                                     </div>
                                 </div>
                                 <table class="table dataTable no-footer" style="width: 100%">

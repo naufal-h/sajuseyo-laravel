@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::Paginate(20);
+        $search = $request->query('search');
+
+        $products = Product::where('name', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->paginate(20);
 
         return view('admin.products.index', compact('products'));
     }

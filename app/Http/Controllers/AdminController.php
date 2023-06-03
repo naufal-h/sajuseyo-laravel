@@ -6,6 +6,9 @@ use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -43,9 +46,10 @@ class AdminController extends Controller
         return redirect()->route('admin.orders.index')->with('success', 'Order status updated successfully');
     }
 
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::Paginate(20);
+        $search = $request->query('search');
+        $users = User::where('name', 'LIKE', "%{$search}%")->orWhere('email', 'LIKE', "%{$search}%")->paginate(20);
 
         return view('admin.users', compact('users'));
     }
