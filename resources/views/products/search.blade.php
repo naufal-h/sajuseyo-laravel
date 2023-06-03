@@ -112,6 +112,7 @@
                         </div>
                     </div>
                 </li>
+
             @empty
 
                 <h1>
@@ -120,4 +121,6 @@
             @endforelse
         </div>
     </div>
+    <hr class="wrapper">
+    {{ $products->links('vendor.pagination.default') }}
 @endsection

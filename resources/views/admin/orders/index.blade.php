@@ -81,7 +81,7 @@
                                     </tbody>
 
                                 </table>
-                                {{ $orders->links('vendor.pagination.default') }}
+                                {{ $orders->links('vendor.pagination.admin') }}
                             </div>
                         </div>
                     </div>

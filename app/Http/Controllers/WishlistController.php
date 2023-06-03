@@ -27,7 +27,7 @@ class WishlistController extends Controller
             return view('wishlist', ['wishlistItems' => collect()]);
         }
 
-        $wishlistItems = $wishlist->wishlistItems()->with('product')->get();
+        $wishlistItems = $wishlist->wishlistItems()->with('product')->paginate(20);
 
         return view('wishlist', compact('wishlistItems', 'wishlist'));
     }

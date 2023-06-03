@@ -86,4 +86,6 @@
             @endforeach
         </div>
     </div>
+    <hr class="wrapper">
+    {{ $products->links('vendor.pagination.default') }}
 @endsection

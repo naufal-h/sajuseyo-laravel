@@ -125,7 +125,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $products->links('vendor.pagination.default') }}
+                                {{ $products->links('vendor.pagination.admin') }}
                             </div>
                         </div>
                     </div>
