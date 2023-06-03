@@ -178,4 +178,11 @@ class ProductController extends Controller
 
         return view('products.search', ['products' => $products, 'searchTerm' => $searchTerm]);
     }
+
+    public function showOnSaleProducts()
+    {
+        $products = Product::whereNotNull('discounted_price')->get();
+
+        return view('products.deals', compact('products'));
+    }
 }

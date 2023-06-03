@@ -103,7 +103,7 @@
                                         <a href="{{ route('products.agency', ['agencyId' => 6]) }}">Others</a>
                                     </div>
                                 </div>
-                                <li class="nav__item"><a href="">Deals</a></li>
+                                <li class="nav__item"><a href="{{ route('products.deals') }}">Deals</a></li>
                             </ul>
                         </nav>
                     </div>

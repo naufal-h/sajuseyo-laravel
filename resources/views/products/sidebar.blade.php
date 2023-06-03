@@ -66,4 +66,14 @@
             </span>Result Were Found</div>
         <hr />
     </div>
+@elseif(Request::is('*/deals'))
+    <div class="sidebar">
+        <div class="text-label">
+            Grab Your Deals
+            <span style="color: #eab8c0">
+                Now!
+            </span>
+            <hr />
+        </div>
+    </div>
 @endif

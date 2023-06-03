@@ -34,6 +34,7 @@ Route::get('/agency/{agencyId}', [ProductController::class, 'showProductsByAgenc
 Route::get('/product-details/{product}', [ProductController::class, 'showProducts'])->name('product-details.show');
 Route::post('/product-details/add/{productId}', [CartController::class, 'addFromDetail'])->name('detail.cart.add');
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/products/deals', [ProductController::class, 'showOnSaleProducts'])->name('products.deals');
 
 
 // Login routes
