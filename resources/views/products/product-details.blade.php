@@ -15,15 +15,14 @@
     <div class="wrapper split-container">
         <div class="left-side">
             <div class="big-img">
-                <img src="{{ asset('storage/' . $product->images[1]) }}" alt="image" height="520" width="520" />
+                <img id="big-image" src="{{ asset('storage/' . $product->images[1]) }}" alt="image" height="520"
+                    width="520" />
             </div>
             <div class="images">
-                @foreach (array_slice($product->images, 1) as $image)
-                    <div class="
-                    {{ $loop->first ? 'first-small' : '' }}
-                    small-img">
-                        <img src="{{ asset('storage/' . $image) }}" alt="image" height="103" width="103"
-                            onclick="showImg(this.src)" />
+                @foreach (array_slice($product->images, 1) as $index => $image)
+                    <div class="{{ $loop->first ? 'first-small' : '' }} small-img">
+                        <img id="small-image-{{ $index }}" src="{{ asset('storage/' . $image) }}" alt="image"
+                            height="103" width="103" onclick="changeBigImage(this)" />
                     </div>
                 @endforeach
             </div>
@@ -326,4 +325,10 @@
             }
         });
     });
+
+    function changeBigImage(smallImg) {
+        const newImgSrc = smallImg.getAttribute('src');
+        const bigImg = document.getElementById('big-image');
+        bigImg.setAttribute('src', newImgSrc);
+    }
 </script>
