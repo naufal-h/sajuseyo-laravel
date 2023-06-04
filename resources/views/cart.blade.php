@@ -6,6 +6,8 @@
 
 @extends('layouts.main')
 
+@section('title', 'Cart | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/cart.css') }}">
 @endsection

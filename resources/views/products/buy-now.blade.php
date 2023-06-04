@@ -4,6 +4,8 @@
 
 @extends('layouts.main')
 
+@section('title', 'Checkout | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/checkout.css') }}">
 @endsection

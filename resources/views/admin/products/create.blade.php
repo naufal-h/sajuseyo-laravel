@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Add Product | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/add-product.css') }}">
 @endsection

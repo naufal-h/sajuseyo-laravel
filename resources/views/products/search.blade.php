@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', $products->total() . ' results found for "' . $searchTerm . '" | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/celebs.css') }}">
 @endsection

@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Order Details | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detorder.css') }}">

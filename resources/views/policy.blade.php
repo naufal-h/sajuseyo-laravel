@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Privacy Policy | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/policy.css') }}">
 @endsection
@@ -25,7 +27,7 @@
         information.
         <br /><br />
         We also collect information about your use of our website, including your
-        IP address, browsing history, and cookies.
+        IP address and cookies.
         <br /><br />
         <ul style="padding-left: 1rem">
             <li>HOW WE USE YOUR INFORMATION</li>

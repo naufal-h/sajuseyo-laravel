@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Update Orders | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/list-product.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detorder.css') }}">

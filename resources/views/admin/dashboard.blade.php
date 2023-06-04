@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Admin Dashboard | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/dashboard.css') }}">
 @endsection

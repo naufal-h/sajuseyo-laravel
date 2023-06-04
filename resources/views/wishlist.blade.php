@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Wishlist | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/celebs.css') }}">
 @endsection
@@ -87,5 +89,5 @@
         </div>
     </div>
     <hr class="wrapper">
-    {{ $products->links('vendor.pagination.default') }}
+    {{ $wishlistItems->links('vendor.pagination.default') }}
 @endsection

@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Terms And Conditions | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/policy.css') }}">
 @endsection

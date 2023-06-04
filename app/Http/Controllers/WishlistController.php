@@ -24,7 +24,9 @@ class WishlistController extends Controller
         $wishlist = Wishlist::where('user_id', $user->id)->first();
 
         if (!$wishlist) {
-            return view('wishlist', ['wishlistItems' => collect()]);
+            $wishlist = Wishlist::create([
+                'user_id' => $user->id,
+            ]);
         }
 
         $wishlistItems = $wishlist->wishlistItems()->with('product')->paginate(20);

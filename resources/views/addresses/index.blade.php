@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'My Addresses | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/address.css') }}">

@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', $category->name . ' | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/celebs.css') }}">
 @endsection

@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sajuseyo!</title>
+    <title>@yield('title')</title>
+    <link rel="icon" href="{{ asset('assets/logo/logo-small.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,8 +36,9 @@
                             <div class="search-section">
                                 <form action="{{ route('products.search') }}" method="GET" class="search nav-form">
                                     <input type="search" name="q" class="search-bar nav-input" maxlength="256"
-                                        placeholder="Search here..." id="search" required="" /><input
-                                        type="submit" value="Search" class="hidden w-button" />
+                                        placeholder="{{ Request::get('q') ? Request::get('q') : 'Search' }}"
+                                        id="search" required="" /><input type="submit" value="Search"
+                                        class="hidden w-button" />
                                 </form>
                             </div>
                         </div>

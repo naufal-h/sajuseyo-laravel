@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', config('app.name') . ' | Your one-stop K-pop shop!')
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
 @endsection

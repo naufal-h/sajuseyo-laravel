@@ -63,7 +63,7 @@
     <div class="sidebar">
         <div class="text-label"><span style="color: #eab8c0">
                 {{ $products->total() }}
-            </span>Result Were Found</div>
+            </span>Results Were Found</div>
         <hr />
     </div>
 @elseif(Request::is('*/deals'))

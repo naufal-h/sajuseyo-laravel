@@ -5,6 +5,8 @@
 
 @extends('layouts.main')
 
+@section('title', $product->name . ' | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/detprod.css') }}">
 @endsection

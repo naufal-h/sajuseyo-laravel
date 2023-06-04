@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'About Us | ' . config('app.name'))
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/aboutus.css') }}">
 @endsection
