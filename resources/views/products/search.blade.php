@@ -133,8 +133,7 @@
                 </h2>
                 <p>
                     We couldn't find any results for "{{ request()->query('q') }}".
-                    <br>Please check for <span style="color:#eab8c0">'Somethin Kinda Crazy'</span> typos or try a
-                    different search term.
+                    <br><span style="color:#eab8c0">'Would U'</span> like to try another keyword?
                 </p>
             </div>
         </center>

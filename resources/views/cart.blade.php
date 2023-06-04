@@ -116,7 +116,10 @@
                         @endif
 
                         <div class="cart-remove-item">
-                            <a href="{{ route('cart.remove', $cartItem->id) }}"class="remove-btn">Remove</a>
+                            <form action="{{ route('cart.remove', $cartItem->id) }}"method="POST">
+                                @csrf
+                                <button type="submit" class="remove-btn">Remove</button>
+                            </form>
                         </div>
 
                         @if ($cartItem->product->stock < $cartItem->quantity)

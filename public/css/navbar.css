@@ -66,6 +66,8 @@
 
 .usnm-drop:hover .usnm-opt {
     display: block;
+    width: 150px;
+    overflow: hidden;
 }
 
 .usnm-opt a {
