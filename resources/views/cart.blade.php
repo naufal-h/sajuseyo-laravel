@@ -134,16 +134,17 @@
             @endphp
         @empty
             <center>
-                <div style="margin: 12vh 0px 25vh 0px">
+                <div style="margin: 12vh 0px 20vh 0px">
                     <img src="
-                    {{ asset('assets/orderconfirm/karduspaket.png') }}
+                    {{ asset('assets/icon/nocart.svg') }}
                     "
-                        style="width: 10rem;">
+                        style="width: 13rem;">
                     <h2 style="font-weight: bold;font-size: 1.5rem;">
-                        Your cart is empty.
+                        Oopsie! You forgot to put it in the cart.
                     </h2>
                     <p>
-                        Please add some items from the shop.
+                        Please add some product and <span style="color: #eab8c0">'Feel the Rhythm'</span> of shopping
+                        delight!
                     </p>
                 </div>
             </center>

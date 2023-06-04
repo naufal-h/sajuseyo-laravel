@@ -91,22 +91,22 @@
                                                 <div class="addprod-title-col-long">
                                                     <label for="name" class="form-label">Name</label>
                                                     <input type="text" name="name" class="form-control slug-title"
-                                                        id="name" />
+                                                        id="name" required />
                                                     @error('name')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="addprod-title-col-long">
                                                     <label for="description" class="form-label">Description</label>
-                                                    <textarea name="description" id="description" class="form-control" rows="2"></textarea>
+                                                    <textarea name="description" id="description" class="form-control" rows="2" required></textarea>
                                                     @error('description')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="addprod-title-col">
                                                     <label for="price" class="form-label">Price</label>
-                                                    <input type="number" name="price" id="price"
-                                                        class="form-control" />
+                                                    <input type="number" name="price" id="price" class="form-control"
+                                                        required />
                                                     @error('price')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -122,8 +122,8 @@
                                                 </div>
                                                 <div class="addprod-title-col">
                                                     <label for="stock" class="form-label">Stock</label>
-                                                    <input type="number" name="stock" id="stock"
-                                                        class="form-control" />
+                                                    <input type="number" name="stock" id="stock" class="form-control"
+                                                        required />
                                                     @error('stock')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -132,7 +132,8 @@
 
                                                 <div class="addprod-title-col">
                                                     <label for="category_id" class="form-label">Category</label>
-                                                    <select name="category_id" id="category_id" class="form-select">
+                                                    <select name="category_id" id="category_id" class="form-select"
+                                                        required>
                                                         @foreach ($categories as $category)
                                                             <option value="{{ $category->id }}">{{ $category->name }}
                                                             </option>
@@ -144,7 +145,7 @@
                                                 </div>
                                                 <div class="addprod-title-col">
                                                     <label for="agency_id" class="form-label">Agency</label>
-                                                    <select name="agency_id" id="agency_id" class="form-select">
+                                                    <select name="agency_id" id="agency_id" class="form-select" required>
                                                         @foreach ($agencies as $agency)
                                                             <option value="{{ $agency->id }}">{{ $agency->name }}
                                                             </option>

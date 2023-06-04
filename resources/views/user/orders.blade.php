@@ -17,7 +17,7 @@
                     <div class="detail-order-main-wrap">
                         @include('layouts.orders-filter')
                         <div></div>
-                        @foreach ($orders as $order)
+                        @forelse ($orders as $order)
                             <div class="detail-order-main-item">
                                 <div class="detail-order-main-content">
                                     <div class="detail-order-head">
@@ -112,7 +112,19 @@
                             </div>
                             <div class="orders-filter"></div>
                             <div></div>
-                        @endforeach
+                        @empty
+                            <center>
+                                <div style="padding: 5vh 0 8vh 0;background-color: white">
+                                    <img src="{{ asset('assets/icon/noorder.svg') }}" style="width: 13rem;">
+                                    <h2 style="font-weight: bold;font-size: 1.8rem;padding-top:5px">
+                                        No order, No <span style="color:#eab8c0">'Happiness'</span> yet.
+                                    </h2>
+                                    <p>
+                                        Start making purchases and brighten your shopping experience!
+                                    </p>
+                                </div>
+                            </center>
+                        @endforelse
                     </div>
                 </div>
             </div>

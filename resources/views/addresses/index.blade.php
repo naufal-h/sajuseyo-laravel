@@ -32,7 +32,7 @@
                             </div>
                             <div class="address-main-content-bg">
                                 <div class="address-main-content-wrap">
-                                    @foreach ($addresses as $address)
+                                    @forelse ($addresses as $address)
                                         <div class="address-main-card address-main-card-padding">
                                             <div class="address-main-card-width">
                                                 <div role="heading" class="address-main-card-margin address-main-card-flex">
@@ -106,7 +106,21 @@
                                                     class="address-main-card-target address-main-card-children"></div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @empty
+
+                                        <center>
+                                            <div style="margin: 1vh 0px 0px 0px;padding: 0 0 10vh 0">
+                                                <img src="{{ asset('assets/icon/noaddress.png') }}" style="width: 17rem;">
+                                                <h2 style="font-weight: bold;font-size: 1.8rem;">
+                                                    No address added yet.
+                                                </h2>
+                                                <p>
+                                                    <span style="color: #eab8c0">'Put Your Stamp On It'</span> and add your
+                                                    address details!
+                                                </p>
+                                            </div>
+                                        </center>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
