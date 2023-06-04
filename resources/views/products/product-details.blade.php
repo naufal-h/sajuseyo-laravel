@@ -31,7 +31,7 @@
                     <h3 class="juduldetail">Product Details</h3>
                     <hr />
                     <p class="ket">
-                        {{ $product->description }}
+                        {!! nl2br(e($product->description)) !!}
                     </p>
                 </div>
             </div>
