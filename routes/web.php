@@ -72,9 +72,9 @@ Route::middleware(['admin'])->group(function () {
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/remove/{cartItemId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-Route::patch('/cart/increase/{cartItemId}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
-Route::patch('/cart/decrease/{cartItemId}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
-Route::patch('/cart/update/{cartItemId}', [CartController::class, 'updateQuantity'])->name('cart.update');
+Route::post('/cart/increase/{cartItemId}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
+Route::post('/cart/decrease/{cartItemId}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+Route::post('/cart/update/{cartItemId}', [CartController::class, 'updateQuantity'])->name('cart.update');
 
 // Wishlist routes
 Route::get('/wishlist', [WishlistController::class, 'showWishlist'])->name('wishlist.show');

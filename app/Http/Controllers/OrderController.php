@@ -146,6 +146,7 @@ class OrderController extends Controller
 
     public function checkout(Request $request)
     {
+        $checkedItems = $request->input('checked_items');
         $courier = $request->input('courier');
         if (!$courier) {
             $courier = 'jne';
@@ -195,7 +196,12 @@ class OrderController extends Controller
 
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->first();
-        $cartItems = $cart->cartItems;
+
+        if (empty($checkedItems)) {
+            return redirect()->back()->with('error', 'Please select at least one item to checkout.');
+        }
+
+        $cartItems = $cart->cartItems()->whereIn('id', $checkedItems)->get();
 
 
         return view('checkout', compact('cartItems', 'address', 'shippingCost', 'courier'));
