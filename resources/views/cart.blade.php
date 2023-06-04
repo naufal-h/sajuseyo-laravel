@@ -14,10 +14,12 @@
 
 @section('content')
     <div class="wrapper cart-top">
-        <center>
-            <h1>Cart</h1>
-        </center>
-        @foreach ($cartItems as $cartItem)
+        @if ($cartItems->count() > 0)
+            <center>
+                <h1>Cart</h1>
+            </center>
+        @endif
+        @forelse ($cartItems as $cartItem)
             <div class="product-cart">
                 <div class="cart-wrap">
                     <div class="cart-content">
@@ -130,7 +132,22 @@
             @php
                 $totalQuantity += $cartItem->quantity;
             @endphp
-        @endforeach
+        @empty
+            <center>
+                <div style="margin: 12vh 0px 25vh 0px">
+                    <img src="
+                    {{ asset('assets/orderconfirm/karduspaket.png') }}
+                    "
+                        style="width: 10rem;">
+                    <h2 style="font-weight: bold;font-size: 1.5rem;">
+                        Your cart is empty.
+                    </h2>
+                    <p>
+                        Please add some items from the shop.
+                    </p>
+                </div>
+            </center>
+        @endforelse
     </div>
     <div class="wrapper cart-bottom">
         <div class="voucher-col">
