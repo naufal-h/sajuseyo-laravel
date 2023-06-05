@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $fileName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+                $fileName = $image->getClientOriginalName();
                 $filePath = $image->storeAs('products', $fileName, 'public');
                 $productData['images'][] = $filePath;
                 $image->storeAs('products', $fileName);
