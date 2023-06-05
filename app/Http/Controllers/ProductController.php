@@ -52,7 +52,6 @@ class ProductController extends Controller
                 $fileName = $image->getClientOriginalName();
                 $filePath = $image->storeAs('products', $fileName, 'public');
                 $productData['images'][] = $filePath;
-                $image->storeAs('products', $fileName);
             }
         }
 
@@ -84,14 +83,18 @@ class ProductController extends Controller
         ]);
 
         $productData = $request->except('images');
-        $productData['images'] = $product->images;
+        $productData['images'] = [];
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
+                $index = array_search($image, $request->file('images'));
+                if (isset($product->images[$index])) {
+                    Storage::delete('public/' . $product->images[$index]);
+                }
+
                 $fileName = $image->getClientOriginalName();
                 $filePath = $image->storeAs('products', $fileName, 'public');
                 $productData['images'][] = $filePath;
-                $image->storeAs('products', $fileName);
             }
         }
 
@@ -103,44 +106,19 @@ class ProductController extends Controller
                 Storage::delete('public/' . $removeImage);
                 $productData['images'] = array_diff($productData['images'], [$removeImage]);
             }
-
-            // reset array index
-            $productData['images'] = array_values($productData['images']);
         }
-
-        if ($request->hasFile('edit_images')) {
-            $editImages = $request->file('edit_images');
-
-            foreach ($editImages as $index => $editImage) {
-                // hapus image lama
-                if (isset($removeImages[$index])) {
-                    Storage::delete('public/' . $product->images[$index]);
-                    unset($productData['images'][$index]);
-                }
-
-                // upload image baru
-                $path = $editImage->store('products', 'public');
-                $productData['images'][$index] = $path;
-
-                // update image di public
-                $publicPath = 'public/storage/products/' . basename($path);
-                if (Storage::exists($publicPath)) {
-                    Storage::delete($publicPath);
-                }
-                Storage::copy($path, $publicPath);
-            }
-        }
-
-        $productData['images'] = $productData['images'] ?? [];
 
         $product->update($productData);
-
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
+
+        foreach ($product->images as $image) {
+            Storage::delete('public/' . $image);
+        }
 
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully');
     }

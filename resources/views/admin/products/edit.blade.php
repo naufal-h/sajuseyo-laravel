@@ -37,9 +37,10 @@
                                                 <div class="form-group">
                                                     <div class="avatar-upload">
                                                         <div class="avatar-edit">
-                                                            <input type="file" id="imageUpload" name="edit_images[]"
+                                                            <input type="file" id="imageUpload" name="images[]"
                                                                 class=" thumbnailimage-upload form-control mt-2"
-                                                                onchange="previewImage(event, {{ 0 }})">
+                                                                onchange="previewImage(event, {{ 0 }})"
+                                                                required>
                                                             <label for="imageUpload"><img src="/assets/svg/edit.svg"
                                                                     class="svg_img header_svg" alt="edit" /></label>
                                                         </div>

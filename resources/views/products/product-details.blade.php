@@ -15,17 +15,27 @@
     <div class="wrapper split-container">
         <div class="left-side">
             <div class="big-img">
-                <img id="big-image" src="{{ asset('storage/' . $product->images[1]) }}" alt="image" height="520"
-                    width="520" />
+                <img id="big-image" src="{{ asset('storage/' . $product->images[0]) }}" alt="image" height="520"
+                    width="520" style="object-fit: cover" />
             </div>
             <div class="images">
-                @foreach (array_slice($product->images, 1) as $index => $image)
+                @foreach (array_slice($product->images, 1, 4) as $index => $image)
                     <div class="{{ $loop->first ? 'first-small' : '' }} small-img">
                         <img id="small-image-{{ $index }}" src="{{ asset('storage/' . $image) }}" alt="image"
-                            height="103" width="103" onclick="changeBigImage(this)" />
+                            height="103" width="103" onclick="changeBigImage(this)" style="object-fit: cover" />
                     </div>
                 @endforeach
             </div>
+            @if (count($product->images) > 4)
+                <div class="images">
+                    @foreach (array_slice($product->images, 5) as $index => $image)
+                        <div class="small-img">
+                            <img id="small-image-{{ $index }}" src="{{ asset('storage/' . $image) }}" alt="image"
+                                height="103" width="103" onclick="changeBigImage(this)" style="object-fit: cover" />
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             <div class="caption">
                 <div class="detail-product">
                     <h3 class="juduldetail">Product Details</h3>

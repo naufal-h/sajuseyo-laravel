@@ -4,6 +4,12 @@
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/webflow.css') }}">
+    <style>
+        .text-contain {
+            pointer-events: none;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -18,10 +24,10 @@
         <div class="hero-content">
             <h1>WENDY - LIKE WATER</h1>
             <p>1st Mini Album</p>
-            <a href="detprod.html" class="btn-shop-now">Buy Now</a>
+            <a href="{{ route('product-details.show', ['product' => 1]) }}" class="btn-shop-now">Buy Now</a>
         </div>
     </div>
-    <div class="main_section2">
+    <div class="main_section2" style="margin: 50px auto auto auto">
         <h1>Top Sales</h1>
         <div class="base-product">
             <ul class="product-list product-grid5">
@@ -137,4 +143,176 @@
             </ul>
         </div>
     </div>
+    <div class="w-embed">
+        <style>
+            .item:nth-child(n) .bg-color {
+                background-color: #fbe3e4;
+            }
+        </style>
+    </div>
+    <div class="section is--slider">
+        <h1 style="font-size: 4em;margin: 0px auto 35px">Agency</h1>
+        <div class="slider_contain">
+            <div class="wrapper w-dyn-list" style="padding-left: 4.3rem">
+                <div id="slider-id" role="list" class="list w-dyn-items">
+                    <div role="listitem" class="item w-dyn-item">
+                        <div class="bg-color"></div>
+                        <a href="{{ route('products.agency', ['agencyId' => 1]) }}" class="card w-inline-block">
+                            <div class="embed w-embed">
+                                <div data-autoplay="true" data-loop="true"
+                                    class="video w-background-video w-background-video-atom">
+                                    <video autoplay="" loop="" muted="" playsinline=""
+                                        data-object-fit="cover">
+                                        <source src="{{ asset('assets/agency/sm.mp4') }}" data-wf-ignore="true">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-contain">
+                                <h4>SM Ent.</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div role="listitem" class="item w-dyn-item">
+                        <div class="bg-color"></div>
+                        <a href="{{ route('products.agency', ['agencyId' => 2]) }}" class="card w-inline-block">
+                            <div class="embed w-embed">
+                                <div data-autoplay="true" data-loop="true"
+                                    class="video w-background-video w-background-video-atom">
+                                    <video autoplay="" loop="" muted="" playsinline=""
+                                        data-object-fit="cover">
+                                        <source src="{{ asset('assets/agency/jyp.mp4') }}" data-wf-ignore="true">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-contain">
+                                <h4>JYP Ent.</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div role="listitem" class="item w-dyn-item">
+                        <div class="bg-color"></div>
+                        <a href="{{ route('products.agency', ['agencyId' => 3]) }}" class="card w-inline-block">
+                            <div class="embed w-embed">
+                                <div data-autoplay="true" data-loop="true"
+                                    class="video w-background-video w-background-video-atom">
+                                    <video autoplay="" loop="" muted="" playsinline=""
+                                        data-object-fit="cover">
+                                        <source src="{{ asset('assets/agency/yg.mp4') }}" data-wf-ignore="true">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-contain">
+                                <h4>YG Ent.</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div role="listitem" class="item w-dyn-item">
+                        <div class="bg-color"></div>
+                        <a href="{{ route('products.agency', ['agencyId' => 4]) }}" class="card w-inline-block">
+                            <div class="embed w-embed">
+                                <div data-autoplay="true" data-loop="true"
+                                    class="video w-background-video w-background-video-atom">
+                                    <video autoplay="" loop="" muted="" playsinline=""
+                                        data-object-fit="cover">
+                                        <source src="{{ asset('assets/agency/hybe.mp4') }}" data-wf-ignore="true">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-contain">
+                                <h4>HYBE Corp.</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div role="listitem" class="item w-dyn-item">
+                        <div class="bg-color"></div>
+                        <a href="{{ route('products.agency', ['agencyId' => 5]) }}" class="card w-inline-block">
+                            <div class="embed w-embed">
+                                <div data-autoplay="true" data-loop="true"
+                                    class="video w-background-video w-background-video-atom">
+                                    <video autoplay="" loop="" muted="" playsinline=""
+                                        data-object-fit="cover">
+                                        <source src="{{ asset('assets/agency/cube.mp4') }}" data-wf-ignore="true">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-contain">
+                                <h4>Cube Ent.</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div role="listitem" class="item w-dyn-item">
+                        <div class="bg-color"></div>
+                        <a href="{{ route('products.agency', ['agencyId' => 6]) }}" class="card w-inline-block">
+                            <div class="embed w-embed">
+                                <div data-autoplay="true" data-loop="true"
+                                    class="video w-background-video w-background-video-atom">
+                                    <video autoplay="" loop="" muted="" playsinline=""
+                                        data-object-fit="cover">
+                                        <source src="{{ asset('assets/agency/others.mp4') }}" data-wf-ignore="true">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="text-contain">
+                                <h4>Others</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f91d148171fba571bd8b1e9"
+        type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+    </script>
+    <script src="https://assets.website-files.com/5f91d148171fba571bd8b1e9/js/cms-draggable-slider.a78e7f552.js"
+        type="text/javascript"></script>
+    <script>
+        var Webflow = Webflow || [];
+        Webflow.push(function() {
+            var figure = $(".video").hover(function() {
+                $('video', this).get(0).play();
+            }, function() {
+                $('video', this).get(0).pause();
+            }).each(function() {
+                $('video', this).get(0).pause();
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+
+            $(".item").mouseenter(function() {
+                var myBG = $(this).children('.bg-color').css("background-color");
+                $("body").css("background-color", myBG);
+            });
+
+            $(".item").mouseleave(function() {
+                $("body").css("background-color", "#fafafa");
+            });
+
+        });
+    </script>
+    <style>
+        .item {
+            display: inline-block;
+        }
+
+        .list {
+            display: block !important;
+        }
+
+        .slick-prev:hover,
+        .slick-prev:focus,
+        .slick-next:hover,
+        .slick-next:focus {
+            outline: none;
+        }
+
+        .slick-slide,
+        .slick-slide * {
+            outline: none !important;
+        }
+    </style>
+
+
 @endsection
