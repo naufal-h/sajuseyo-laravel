@@ -5,6 +5,7 @@
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/webflow.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slider.css') }}">
     <style>
         .text-contain {
             pointer-events: none;
@@ -27,8 +28,10 @@
             <a href="{{ route('product-details.show', ['product' => 1]) }}" class="btn-shop-now">Buy Now</a>
         </div>
     </div>
-    <div class="main_section2" style="margin: 50px auto auto auto">
-        <h1>Top Sales</h1>
+    <div class="main_section2" style="margin: 50px auto auto auto; padding-top: 55px">
+        <center>
+            <h1 style="font-size: 2.5em">Top Sales</h1>
+        </center>
         <div class="base-product">
             <ul class="product-list product-grid5">
 
@@ -151,7 +154,7 @@
         </style>
     </div>
     <div class="section is--slider">
-        <h1 style="font-size: 4em;margin: 0px auto 35px">Agency</h1>
+        <h1 style="font-size: 2.5em;margin: 0px auto 35px">Agency</h1>
         <div class="slider_contain">
             <div class="wrapper w-dyn-list" style="padding-left: 4.3rem">
                 <div id="slider-id" role="list" class="list w-dyn-items">
@@ -261,11 +264,51 @@
             </div>
         </div>
     </div>
+    <div style="background-color: #ECE2F0; padding : 10px 0 50px 0; margin: 50px 0 100px 0; overflow-x: hidden">
+        <center>
+            <h1 style="font-size: 2.5em;margin: 40px auto 0px">New Releases</h1>
+        </center>
+        <div class="section">
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div data-animation="slide" data-hide-arrows="1" data-duration="500" class="slider w-slider">
+                        <div class="mask w-slider-mask">
+                            <div class="slide w-slide">
+                                <img src="https://media.discordapp.net/attachments/828120769903984670/1115469495675392070/FtyyFPHacAAPDgl.png"
+                                    alt="" class="slide-content-wrapper">
+                            </div>
+                            <div class="slide w-slide">
+                                <img src="https://cdn.discordapp.com/attachments/828120769903984670/1115463946850283550/FlHRaM6aEAEYrbX.jpg"
+                                    alt="" class="slide-content-wrapper">
+                            </div>
+                            <div class="slide w-slide">
+                                <img src="https://cdn.discordapp.com/attachments/828120769903984670/1115470010949840906/5969d635ce6eb8f51b1da79d7140cfcd.png"
+                                    alt="" class="slide-content-wrapper">
+                            </div>
+                            <div class="slide w-slide">
+                                <img src="https://cdn.discordapp.com/attachments/828120769903984670/1115470458947633254/ab67616d0000b273e08c3c6ffdd7ed782323d1b9.png"
+                                    alt="" class="slide-content-wrapper">
+                            </div>
+                        </div>
+                        <div class="slider-left-arrow w-slider-arrow-left">
+                            <div class="slider-icon w-icon-slider-left"></div>
+                        </div>
+                        <div class="slider-right-arrow w-slider-arrow-right">
+                            <div class="slider-icon w-icon-slider-right"></div>
+                        </div>
+                        <div class="w-slider-nav w-round"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f91d148171fba571bd8b1e9"
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
     </script>
     <script src="https://assets.website-files.com/5f91d148171fba571bd8b1e9/js/cms-draggable-slider.a78e7f552.js"
         type="text/javascript"></script>
+    <script src="https://assets.website-files.com/5df0e1d5c2f6ed42db3a3f5e/js/webflow.e87bb3f9f.js" type="text/javascript">
+    </script>
     <script>
         var Webflow = Webflow || [];
         Webflow.push(function() {
