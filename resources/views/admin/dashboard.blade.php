@@ -246,7 +246,7 @@
                                         <a
                                             href="
                                             {{ route('admin.products.edit', $product->id) }}"><img
-                                                src="{{ asset('storage/' . $product->images[1]) }}"
+                                                src="{{ isset($product->images[0]) ? asset('storage/' . $product->images[0]) : 'https://dummyimage.com/765x765/eab8c1/ffffff.jpg&text=Insert+Image+Here+(1:1+Ratio)' }}"
                                                 alt="customer image" /></a>
                                     </div>
                                     <div class="col-product-title col-product-title-mob media-body pos">
