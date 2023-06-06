@@ -139,6 +139,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="navbarpoint__bottom">
+                <a href="{{ route('home') }}" class="wrapper navbarpoint__wrapper">
+                    Home
+                </a>
+            </div>
+            <div class="navbarpoint__bottom">
+                <a href="{{ route('products.category', ['categoryId' => 1]) }}" class="wrapper navbarpoint__wrapper">
+                    Product
+                </a>
+            </div>
+            <div class="navbarpoint__bottom">
+                <a href="{{ route('products.agency', ['agencyId' => 1]) }}" class="wrapper navbarpoint__wrapper">
+                    Celeb
+                </a>
+            </div>
+            <div class="navbarpoint__bottom">
+                <a href="{{ route('products.deals') }}" class="wrapper navbarpoint__wrapper">
+                    Deals
+                </a>
+            </div>
         </nav>
     </header>
 
@@ -199,4 +220,27 @@
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        const hamburgerButton = document.querySelector('.menu-button');
+        const navbarWrappers = document.querySelectorAll('.navbarpoint__wrapper');
+
+        hamburgerButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navbarWrappers.forEach(function(wrapper) {
+                wrapper.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            const navbarBottom = document.querySelector('.navbar__bottom');
+            const naviwrap = document.querySelectorAll('.navbarpoint__wrapper');
+            const isClickedWithinNavbar = navbarBottom.contains(e.target);
+            const isClickedWithinNaviwrap = naviwrap.contains(e.target);
+            if (!isClickedWithinNavbar && !isClickedWithinNaviwrap) {
+                navbarWrappers.forEach(function(wrapper) {
+                    wrapper.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
