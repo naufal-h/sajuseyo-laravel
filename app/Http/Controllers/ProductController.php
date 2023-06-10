@@ -126,7 +126,7 @@ class ProductController extends Controller
     public function showProductsByCategory($categoryId)
     {
         $category = Category::findOrFail($categoryId);
-        $products = $category->products()->paginate(20);
+        $products = $category->products()->paginate(21);
 
         return view('products.category', compact('category', 'products'));
     }
@@ -135,7 +135,7 @@ class ProductController extends Controller
     {
         $agency = Agency::findOrFail($agencyId);
 
-        $products = $agency->products()->paginate(20);
+        $products = $agency->products()->paginate(21);
 
         return view('products.agency', compact('agency', 'products'));
     }
@@ -154,7 +154,7 @@ class ProductController extends Controller
     {
 
         $searchTerm = $request->input('q');
-        $products = Product::where('name', 'LIKE', "%{$searchTerm}%")->paginate(20);
+        $products = Product::where('name', 'LIKE', "%{$searchTerm}%")->paginate(21);
 
 
         return view('products.search', ['products' => $products, 'searchTerm' => $searchTerm]);
@@ -162,7 +162,7 @@ class ProductController extends Controller
 
     public function showOnSaleProducts()
     {
-        $products = Product::whereNotNull('discounted_price')->paginate(20);
+        $products = Product::whereNotNull('discounted_price')->paginate(21);
 
         return view('products.deals', compact('products'));
     }

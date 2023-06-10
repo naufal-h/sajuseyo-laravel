@@ -25,4 +25,9 @@ class HomeController extends Controller
 
         return view('home', compact('products'));
     }
+
+    public function error()
+    {
+        return view('errors.404');
+    }
 }

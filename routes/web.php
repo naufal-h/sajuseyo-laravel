@@ -26,7 +26,7 @@ use App\Http\Controllers\WishlistController;
 Route::get('/home', function () {
     return redirect('/');
 });
-// the name are home and index
+Route::get('/404', [App\Http\Controllers\HomeController::class, 'error'])->name('error404');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Product routes
