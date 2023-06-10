@@ -1,0 +1,67 @@
+[
+    {
+        "name": "APP_NAME",
+        "value": "sajuseyo!",
+        "slotSetting": false
+    },
+    {
+        "name": "APP_ENV",
+        "value": "production",
+        "slotSetting": false
+    },
+    {
+        "name": "APP_KEY",
+        "value": "TODO",
+        "slotSetting": false
+    },
+    {
+        "name": "APP_DEBUG",
+        "value": "true",
+        "slotSetting": false
+    },
+    {
+        "name": "LOG_CHANNEL",
+        "value": "stack",
+        "slotSetting": false
+    },
+    {
+        "name": "LOG_DEPRECATIONS_CHANNEL",
+        "value": "null",
+        "slotSetting": false
+    },
+    {
+        "name": "LOG_LEVEL",
+        "value": "debug",
+        "slotSetting": false
+    },
+    {
+        "name": "DB_CONNECTION",
+        "value": "mysql",
+        "slotSetting": false
+    },
+    {
+        "name": "DB_HOST",
+        "value": "sajuseyodb.mysql.database.azure.com",
+        "slotSetting": false
+    },
+    {
+        "name": "DB_PORT",
+        "value": "3306",
+        "slotSetting": false
+    },
+    {
+        "name": "DB_DATABASE",
+        "value": "sajuseyodb",
+        "slotSetting": false
+    },
+    {
+        "name": "DB_USERNAME",
+        "value": "sajuseyo",
+        "slotSetting": false
+    },
+    {
+        "name": "DB_PASSWORD",
+        "value": "Adminkren123",
+        "slotSetting": false
+    }
+]
