@@ -110,7 +110,7 @@
 
                                         <center>
                                             <div style="margin: 1vh 0px 0px 0px;padding: 0 0 10vh 0">
-                                                <img src="{{ asset('assets/icon/noaddress.png') }}" style="width: 17rem;">
+                                                <img src="{{ asset('assets/icon/noaddress.svg') }}" style="width: 17rem;">
                                                 <h2 style="font-weight: bold;font-size: 1.8rem;">
                                                     No address added yet.
                                                 </h2>
