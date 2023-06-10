@@ -166,7 +166,7 @@
     @yield('content')
 
     <footer class="footer">
-        <div class="footer-container">
+        <div class="footer-container wrapper">
             <div class="footer-grid">
                 <div class="footer-logo-block">
                     <a href="{{ route('home') }}" class="footer-logo">

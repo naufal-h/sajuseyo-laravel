@@ -156,7 +156,7 @@
     <div class="section is--slider">
         <h1 style="font-size: 2.5em;margin: 0px auto 35px">Agency</h1>
         <div class="slider_contain">
-            <div class="wrapper w-dyn-list" style="padding-left: 4.3rem">
+            <div class="wrapper w-dyn-list">
                 <div id="slider-id" role="list" class="list w-dyn-items">
                     <div role="listitem" class="item w-dyn-item">
                         <div class="bg-color"></div>

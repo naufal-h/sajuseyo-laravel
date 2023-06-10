@@ -2232,3 +2232,9 @@ blockquote {
     font-style: normal;
     font-display: swap;
 }
+
+@media screen and (min-width: 1455px) {
+    .w-dyn-list {
+        padding-left: 4.3rem !important;
+    }
+}
