@@ -141,7 +141,7 @@ class OrderController extends Controller
         $product->stock -= $quantity;
         $product->save();
 
-        return redirect()->route('home')->with('success', 'Order placed successfully.');
+        return view('orderconfirmed')->with('success', 'Order placed successfully.');
     }
 
     public function checkout(Request $request)
@@ -285,7 +285,7 @@ class OrderController extends Controller
 
         $cart->delete();
 
-        return redirect()->route('home')->with('success', 'Order placed successfully.');
+        return view('orderconfirmed')->with('success', 'Order placed successfully.');
     }
 
     public function showOrders()

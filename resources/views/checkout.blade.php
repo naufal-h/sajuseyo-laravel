@@ -201,8 +201,8 @@
                     </div>
                 </div>
             </div>
+        </form>
     </div>
-    </form>
     <script>
         const submitButton = document.getElementById('submitButton');
         const submitButton2 = document.getElementById('submitButton2');

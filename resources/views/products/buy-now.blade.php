@@ -166,7 +166,7 @@
                     <div class="checkout-main-total-wrap">
                         <div class="checkout-main-total">
                             <div class="checkout-main-total-qty">Total (
-                                {{ app('App\Http\Controllers\CartController')->getCartTotalQuantity() }}
+                                {{ $quantity }}
                                 item(s)):</div>
                             <div class="checkout-main-total-price">
                                 Rp. {{ number_format($overallSubtotal, 0, '.', '.') }}
