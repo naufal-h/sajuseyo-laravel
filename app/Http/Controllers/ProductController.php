@@ -144,6 +144,7 @@ class ProductController extends Controller
     {
         $products = Product::where('agency_id', $product->agency_id)
             ->where('id', '!=', $product->id)
+            ->inRandomOrder()
             ->limit(5)
             ->get();
 
