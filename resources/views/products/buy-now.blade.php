@@ -122,7 +122,11 @@
                             <div class="checkout-main-ship-opt">Shipping Option:</div>
                             <div class="checkout-main-ship-type">
                                 <div>
-                                    {{ $courier == 'jne' ? 'JNE' : ($courier == 'pos' ? 'Pos Indonesia' : 'TIKI') }}
+                                    @foreach ($couriers as $courier)
+                                        <div id="{{ $courier }}-names" class="courier-now">
+                                            {{ $courier === 'pos' ? 'Pos Indonesia' : strtoupper($courier) }}
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -132,34 +136,26 @@
                             <div class="usnm-drop">
                                 <div class="checkout-main-ship-change">Change</div>
                                 <div class="usnm-opt">
-                                    <form id="changeCourier"
-                                        action="{{ route('checkout.buy_now', ['productId' => $product->id]) }}"
-                                        method="POST">
-                                        @csrf
-                                        <input type="hidden" name="quantity" value="{{ $quantity }}">
-                                        <input type="hidden" name="courier" value="jne">
-                                        <a href="#" id="submitButton">JNE</a>
-                                    </form>
-                                    <form id="changeCourier2"
-                                        action="{{ route('checkout.buy_now', ['productId' => $product->id]) }}"
-                                        method="POST">
-                                        @csrf
-                                        <input type="hidden" name="quantity" value="{{ $quantity }}">
-                                        <input type="hidden" name="courier" value="pos">
-                                        <a href="#" id="submitButton2">Pos Indonesia</a>
-                                    </form>
-                                    <form id="changeCourier3"
-                                        action="{{ route('checkout.buy_now', ['productId' => $product->id]) }}"
-                                        method="POST">
-                                        @csrf
-                                        <input type="hidden" name="quantity" value="{{ $quantity }}">
-                                        <input type="hidden" name="courier" value="tiki">
-                                        <a href="#" id="submitButton3">TIKI</a>
-                                    </form>
+                                    @foreach ($couriers as $courier)
+                                        <a class="courier-name" data-courier="{{ $courier }}">
+                                            {{ $courier === 'pos' ? 'Pos Indonesia' : strtoupper($courier) }}
+                                        </a>
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="checkout-main-ship-cost">
-                                Rp. {{ number_format($shippingCost, 0, '.', '.') }}
+                            <div id="shippingFees">
+                                @foreach ($couriers as $courier)
+                                    @php
+                                        $shippingFee = $shippingCosts[$courier];
+                                    @endphp
+                                    <div id="{{ $courier }}-fees" class="checkout-main-ship-cost shipping-fee">
+                                        @if ($shippingFee)
+                                            Rp. {{ number_format($shippingFee, 0, '.', '.') }}
+                                        @else
+                                            No shipping fee available
+                                        @endif
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -178,8 +174,8 @@
         </div>
         <form action="{{ route('checkout.place_order_now', ['productId' => $product->id]) }}" method="POST">
             @csrf
-            <input type="hidden" name="courier" value="{{ $courier }}">
-            <input type="hidden" name="shippingCost" value="{{ $shippingCost }}">
+            <input type="hidden" name="courier">
+            <input type="hidden" name="shippingCost">
             <input type="hidden" name="quantity" value="{{ $quantity }}">
             <div class="checkout-bottom">
                 <div class="checkout-bottom-gap"></div>
@@ -193,16 +189,31 @@
                     <div class="checkout-bottom-item checkout-bottom-item-left checkout-bottom-item-2nd">
                         Shipping Fee:
                     </div>
-                    <div class="checkout-bottom-item checkout-bottom-item-right checkout-bottom-item-2nd">
-                        Rp. {{ number_format($shippingCost, 0, '.', '.') }}
-                    </div>
+                    @foreach ($couriers as $courier)
+                        @php
+                            $shippingFee = $shippingCosts[$courier];
+                        @endphp
+                        <div id="{{ $courier }}-cost"
+                            class="checkout-bottom-item checkout-bottom-item-right checkout-bottom-item-2nd shipping-cost">
+                            @if ($shippingFee)
+                                Rp. {{ number_format($shippingFee, 0, '.', '.') }}
+                            @else
+                                No shipping fee available
+                            @endif
+                        </div>
 
-                    <div class="checkout-bottom-item checkout-bottom-item-left cart-total">
-                        Total:
-                    </div>
-                    <div class="checkout-bottom-item kC0GSn checkout-bottom-item-right cart-total">
-                        Rp. {{ number_format($overallSubtotal + $shippingCost, 0, '.', '.') }}
-                    </div>
+                        <div class="checkout-bottom-item checkout-bottom-item-left cart-total">
+                            Total:
+                        </div>
+                        <div id="{{ $courier }}-total"
+                            class="checkout-bottom-item kC0GSn checkout-bottom-item-right cart-total shipping-total">
+                            @if ($shippingFee)
+                                Rp. {{ number_format($overallSubtotal + $shippingFee, 0, '.', '.') }}
+                            @else
+                                No shipping fee available
+                            @endif
+                        </div>
+                    @endforeach
                     <div class="checkout-bottom-button">
                         <button type="submit" class="co-button-solid">
                             Checkout
@@ -212,28 +223,37 @@
             </div>
     </div>
     </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        const submitButton = document.getElementById('submitButton');
-        const submitButton2 = document.getElementById('submitButton2');
-        const submitButton3 = document.getElementById('submitButton3');
-        const form = document.getElementById('changeCourier');
-        const form2 = document.getElementById('changeCourier2');
-        const form3 = document.getElementById('changeCourier3');
+        $(document).ready(function() {
+            var selectedCourier = 'jne';
+            var selectedShippingFee = 0;
+            showSelectedCourier(selectedCourier);
 
+            $('.courier-name').on('click', function() {
+                var courier = $(this).data('courier');
+                selectedCourier = courier;
+                selectedShippingFee = $('#shippingFees #' + courier + '-fees').text();
+                selectedShippingFee = parseInt(selectedShippingFee.replace(/Rp. /g, '').replace(/\./g, ''));
+                showSelectedCourier(courier);
+                updateData(selectedCourier, selectedShippingFee);
+            });
 
-        submitButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            form.submit();
-        });
+            function showSelectedCourier(courier) {
+                $('.shipping-fee').hide();
+                $('.shipping-cost').hide();
+                $('.shipping-total').hide();
+                $('.courier-now').hide();
+                $('#' + courier + '-fees').show();
+                $('#' + courier + '-names').show();
+                $('#' + courier + '-cost').show();
+                $('#' + courier + '-total').show();
+            }
 
-        submitButton2.addEventListener('click', function(event) {
-            event.preventDefault();
-            form2.submit();
-        });
-
-        submitButton3.addEventListener('click', function(event) {
-            event.preventDefault();
-            form3.submit();
+            function updateData(courier, shippingFee) {
+                $('input[name="courier"]').val(courier);
+                $('input[name="shippingCost"]').val(shippingFee);
+            }
         });
     </script>
 @endsection

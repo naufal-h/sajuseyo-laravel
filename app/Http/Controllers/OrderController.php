@@ -18,13 +18,9 @@ class OrderController extends Controller
 
     public function buyNow(Request $request, $productId)
     {
-        $courier = $request->input('courier');
-        if (!$courier) {
-            $courier = 'jne';
-        }
         $quantity = $request->input('quantity');
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
         $addresses = auth()->user()->addresses;
 
@@ -46,21 +42,26 @@ class OrderController extends Controller
 
         $cityName = json_decode($response->getBody(), true)['rajaongkir']['results']['city_name'];
 
-        $shippingCost = 0;
-        $response = $rajaOngkir->request('POST', $baseUrl . 'cost', [
-            'headers' => [
-                'key' => $apiKey,
-                'content-type' => 'application/x-www-form-urlencoded',
-            ],
-            'form_params' => [
-                'origin' => 151, // ID Tangsel
-                'destination' => $address->city,
-                'weight' => 200, // Gram
-                'courier' => $courier,
-            ],
-        ]);
+        $shippingCosts = [];
+        $couriers = ['jne', 'pos', 'tiki'];
 
-        $shippingCost = json_decode($response->getBody(), true)['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+        foreach ($couriers as $courier) {
+            $response = $rajaOngkir->request('POST', $baseUrl . 'cost', [
+                'headers' => [
+                    'key' => $apiKey,
+                    'content-type' => 'application/x-www-form-urlencoded',
+                ],
+                'form_params' => [
+                    'origin' => 151, // ID Tangsel
+                    'destination' => $address->city,
+                    'weight' => 200, // Gram
+                    'courier' => $courier,
+                ],
+            ]);
+
+            $shippingCost = json_decode($response->getBody(), true)['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+            $shippingCosts[$courier] = $shippingCost;
+        }
 
         $address->province = $provinceName;
         $address->city = $cityName;
@@ -68,7 +69,7 @@ class OrderController extends Controller
         $product = Product::findOrFail($productId);
 
 
-        return view('products.buy-now', compact('product', 'address', 'quantity', 'shippingCost', 'courier'));
+        return view('products.buy-now', compact('product', 'address', 'quantity', 'shippingCosts', 'couriers'));
     }
 
     public function placeOrderNow(Request $request, $productId)
@@ -77,7 +78,7 @@ class OrderController extends Controller
         $shippingCost = $request->input('shippingCost');
         $quantity = $request->input('quantity');
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
 
         $user = Auth::user();
@@ -147,13 +148,10 @@ class OrderController extends Controller
     public function checkout(Request $request)
     {
         $checkedItems = $request->input('checked_items');
-        $courier = $request->input('courier');
-        if (!$courier) {
-            $courier = 'jne';
-        }
+
 
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
         $addresses = auth()->user()->addresses;
 
@@ -175,21 +173,26 @@ class OrderController extends Controller
 
         $cityName = json_decode($response->getBody(), true)['rajaongkir']['results']['city_name'];
 
-        $shippingCost = 0;
-        $response = $rajaOngkir->request('POST', $baseUrl . 'cost', [
-            'headers' => [
-                'key' => $apiKey,
-                'content-type' => 'application/x-www-form-urlencoded',
-            ],
-            'form_params' => [
-                'origin' => 151, // ID Tangsel
-                'destination' => $address->city,
-                'weight' => 200, // Gram
-                'courier' => $courier,
-            ],
-        ]);
+        $shippingCosts = [];
+        $couriers = ['jne', 'pos', 'tiki'];
 
-        $shippingCost = json_decode($response->getBody(), true)['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+        foreach ($couriers as $courier) {
+            $response = $rajaOngkir->request('POST', $baseUrl . 'cost', [
+                'headers' => [
+                    'key' => $apiKey,
+                    'content-type' => 'application/x-www-form-urlencoded',
+                ],
+                'form_params' => [
+                    'origin' => 151, // ID Tangsel
+                    'destination' => $address->city,
+                    'weight' => 200, // Gram
+                    'courier' => $courier,
+                ],
+            ]);
+
+            $shippingCost = json_decode($response->getBody(), true)['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+            $shippingCosts[$courier] = $shippingCost;
+        }
 
         $address->province = $provinceName;
         $address->city = $cityName;
@@ -203,21 +206,25 @@ class OrderController extends Controller
 
         $cartItems = $cart->cartItems()->whereIn('id', $checkedItems)->get();
 
+        $request->session()->put('checked_cart_items', $checkedItems);
 
-        return view('checkout', compact('cartItems', 'address', 'shippingCost', 'courier'));
+
+        return view('checkout', compact('cartItems', 'address', 'shippingCosts', 'couriers'));
     }
 
     public function placeOrder(Request $request)
     {
+        $checkedItems = $request->session()->get('checked_cart_items');
+        $overallSubtotal = $request->input('overallSubtotal');
         $shippingCost = $request->input('shippingCost');
         $courier = $request->input('courier');
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
 
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->first();
-        $cartItems = $cart->cartItems;
+        $cartItems = $cart->cartItems()->whereIn('id', $checkedItems)->get();
         $user = User::find(Auth::id());
         $address = $user->addresses()->where('is_default', 1)->first();
 
@@ -240,19 +247,8 @@ class OrderController extends Controller
         $address->province = $provinceName;
         $address->city = $cityName;
 
-        $totalAmount = 0;
-        $cartItems->each(function ($cartItem) use ($request, &$totalAmount) {
-            if ($cartItem->product->discounted_price) {
-                $totalAmount += $cartItem->product->discounted_price * $cartItem->quantity;
-            } else {
-                $totalAmount += $cartItem->product->price * $cartItem->quantity;
-            }
-        });
-
-
-
         $order = $user->orders()->create([
-            'total_amount' => $totalAmount,
+            'total_amount' => $overallSubtotal,
             'address_name' => $address->name,
             'address_phone' => $address->phone,
             'address_address' => $address->address,
@@ -283,7 +279,7 @@ class OrderController extends Controller
             $product->save();
         });
 
-        $cart->delete();
+        $cart->cartItems()->whereIn('id', $checkedItems)->delete();
 
         return view('orderconfirmed')->with('success', 'Order placed successfully.');
     }

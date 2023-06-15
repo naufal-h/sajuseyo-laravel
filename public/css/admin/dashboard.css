@@ -920,6 +920,7 @@ button:not(:disabled) {
 
 .title-marg-bot {
     margin-bottom: 10px;
+    max-width: 370px;
 }
 .rounded {
     border-radius: 0.25rem !important;

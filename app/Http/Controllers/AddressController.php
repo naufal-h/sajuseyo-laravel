@@ -15,7 +15,7 @@ class AddressController extends Controller
     {
         $this->middleware('auth');
         $this->client = new Client();
-        $this->apiKey = '50fccf12764162cd152d016aae5460e1';
+        $this->apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $this->baseUrl = 'https://api.rajaongkir.com/starter/';
     }
 
@@ -35,7 +35,7 @@ class AddressController extends Controller
     public function getCitiesByProvince($provinceId)
     {
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
 
         $response = $rajaOngkir->request('GET', $baseUrl . 'city?province=' . $provinceId, [
@@ -67,7 +67,7 @@ class AddressController extends Controller
     public function index()
     {
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
         $addresses = auth()->user()->addresses;
 
@@ -100,7 +100,7 @@ class AddressController extends Controller
     public function create()
     {
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
 
         $response = $rajaOngkir->request('GET', $baseUrl . 'province', [
@@ -154,7 +154,7 @@ class AddressController extends Controller
     public function edit(string $id)
     {
         $rajaOngkir = new Client();
-        $apiKey = '50fccf12764162cd152d016aae5460e1';
+        $apiKey = '24032e2eab2263da4aea3acc06f045a3';
         $baseUrl = 'https://api.rajaongkir.com/starter/';
 
         $response = $rajaOngkir->request('GET', $baseUrl . 'province', [

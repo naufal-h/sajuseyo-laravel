@@ -100,12 +100,10 @@
                                 @if ($cartItem->product->discounted_price)
                                     @php
                                         $cartItemSubtotals[$cartItem->id] = $cartItem->product->discounted_price * $cartItem->quantity;
-                                        $overallSubtotal += $cartItemSubtotals[$cartItem->id];
                                     @endphp
                                 @else
                                     @php
                                         $cartItemSubtotals[$cartItem->id] = $cartItem->product->price * $cartItem->quantity;
-                                        $overallSubtotal += $cartItemSubtotals[$cartItem->id];
                                     @endphp
                                 @endif
                                 @if ($cartItem->product->stock > 0)
@@ -134,9 +132,6 @@
                             </div>
                         </div>
                     </div>
-                    @php
-                        $totalQuantity += $cartItem->quantity;
-                    @endphp
                 @empty
                     <center>
                         <div style="margin: 12vh 0px 20vh 0px">
@@ -162,8 +157,8 @@
                 <div class="cart-checkout">
                 </div>
                 <div class="co-info">
-                    <div class="co-qty">Total ({{ $totalQuantity }} item(s)):</div>
-                    <div class="co-price">Rp. {{ number_format($overallSubtotal, 0, '.', '.') }}</div>
+                    <div id="totalQuantity" class="co-qty">Total ({{ $totalQuantity }} item(s)):</div>
+                    <div id="overallSubtotal" class="co-price">Rp. {{ number_format($overallSubtotal, 0, '.', '.') }}</div>
                 </div>
 
                 @if (count($cartItems) > 0)
@@ -198,7 +193,30 @@
             @endif
         </div>
     </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        $('input.checkbox-input').change(function() {
+            var totalQuantity = 0;
+            var overallSubtotal = 0;
+
+            $('input.checkbox-input:checked').each(function() {
+                var $cartItem = $(this).closest('.product-cart');
+                var quantity = parseInt($cartItem.find('.qty-val').val());
+                var subtotal = parseInt($cartItem.find('.cart-total-price span').text().replace(/[^0-9]/g,
+                    ''));
+
+                totalQuantity += quantity;
+                overallSubtotal += subtotal;
+            });
+
+            $('#totalQuantity').text('Total (' + totalQuantity + ' item(s)):');
+            $('#overallSubtotal').text('Rp. ' + formatNumber(overallSubtotal));
+        });
+
+        function formatNumber(number) {
+            return number.toLocaleString('id-ID');
+        }
+
         function submitOnEnter(event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
